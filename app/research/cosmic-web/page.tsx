@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectPagination } from "@/components/ProjectPagination";
 import { CosmicPipelineViz } from "@/components/CosmicPipelineViz";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function CosmicWebCaseStudy() {
       {/* Top Header */}
       <header className="container cs-header">
         <div className="cs-breadcrumbs">
-          <Link href="/">THEJITHA // LAB</Link>
+          <Link href="/">THEJITHA</Link>
           <span>/</span>
           <Link href="/#research">CURRENT RESEARCH</Link>
           <span>/</span>
@@ -141,15 +142,21 @@ export default function CosmicWebCaseStudy() {
         </div>
       </section>
 
-      {/* Footer Navigation */}
-      <nav className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "50px", fontFamily: "var(--font-mono)", fontSize: "11px" }}>
-        <Link href="/work/farmify" style={{ color: "var(--muted)" }}>
-          ← PREVIOUS: FARMIFY
-        </Link>
-        <Link href="/#work" style={{ color: "var(--accent)" }}>
-          RETURN TO SELECTED WORK →
-        </Link>
-      </nav>
+      {/* Project Pagination */}
+      <div className="container">
+        <ProjectPagination
+          previous={{
+            title: "Farmify Agricultural Platform",
+            route: "/work/farmify",
+          }}
+          next={{
+            title: "TeaBlendAI Auction Platform",
+            route: "/work/teablend-ai",
+          }}
+          returnRoute="/#research"
+          returnLabel="CURRENT RESEARCH"
+        />
+      </div>
     </main>
   );
 }

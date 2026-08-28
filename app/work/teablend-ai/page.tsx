@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectPagination } from "@/components/ProjectPagination";
 import { TeaBlendArchViz } from "@/components/TeaBlendArchViz";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function TeaBlendCaseStudy() {
       {/* Top Header */}
       <header className="container cs-header">
         <div className="cs-breadcrumbs">
-          <Link href="/">THEJITHA // LAB</Link>
+          <Link href="/">THEJITHA</Link>
           <span>/</span>
           <Link href="/#work">SELECTED WORK</Link>
           <span>/</span>
@@ -197,15 +198,17 @@ export default function TeaBlendCaseStudy() {
         </div>
       </section>
 
-      {/* Footer Navigation */}
-      <nav className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "50px", fontFamily: "var(--font-mono)", fontSize: "11px" }}>
-        <Link href="/#work" style={{ color: "var(--muted)" }}>
-          ← RETURN TO SELECTED WORK
-        </Link>
-        <Link href="/work/sandplotter" style={{ color: "var(--accent)" }}>
-          NEXT PROJECT: SANDPLOTTER SMART COFFEE TABLE →
-        </Link>
-      </nav>
+      {/* Project Pagination */}
+      <div className="container">
+        <ProjectPagination
+          next={{
+            title: "SandPlotter Smart Coffee Table",
+            route: "/work/sandplotter",
+          }}
+          returnRoute="/#work"
+          returnLabel="SELECTED WORK"
+        />
+      </div>
     </main>
   );
 }

@@ -11,7 +11,7 @@ export default function CVPage() {
       <div className="container" style={{ maxWidth: "940px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "32px", borderBottom: "1px solid var(--line)", paddingBottom: "16px", fontFamily: "var(--font-mono)", fontSize: "11px", flexWrap: "wrap", gap: "16px" }}>
           <Link href="/" style={{ color: "var(--muted)", display: "inline-flex", alignItems: "center", gap: "6px" }}>
-            <span>← RETURN TO THEJITHA // LAB</span>
+            <span>← RETURN TO THEJITHA</span>
           </Link>
 
           <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>

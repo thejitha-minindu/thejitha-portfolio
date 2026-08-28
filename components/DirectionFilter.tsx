@@ -26,20 +26,13 @@ export function DirectionFilter({
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        flexWrap: "wrap",
-        gap: "16px",
-        marginBottom: "28px",
-        fontFamily: "var(--font-mono)",
-        fontSize: "11px",
-      }}
-    >
-      <span style={{ color: "var(--muted)" }}>FILTER BY DISCIPLINE:</span>
-      <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }} role="tablist">
+    <div className="filter-toolbar">
+      <div className="filter-label-group">
+        <span className="filter-pulse-dot" aria-hidden="true" />
+        <span className="filter-label">FILTER BY DISCIPLINE</span>
+      </div>
+
+      <div className="filter-buttons-list" role="tablist" aria-label="Filter projects by discipline">
         {modes.map((m) => {
           const isActive = activeMode === m.id;
           return (
@@ -49,21 +42,10 @@ export function DirectionFilter({
               role="tab"
               aria-selected={isActive}
               onClick={() => onModeChange(m.id)}
-              style={{
-                background: isActive ? "var(--text)" : "transparent",
-                color: isActive ? "#080909" : "var(--muted)",
-                border: "1px solid",
-                borderColor: isActive ? "var(--text)" : "var(--line)",
-                padding: "6px 12px",
-                fontFamily: "var(--font-mono)",
-                fontSize: "10px",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                transition: "all 0.2s",
-                fontWeight: isActive ? "600" : "normal",
-              }}
+              className={`filter-btn ${isActive ? "active" : ""}`}
             >
-              {m.label} <span style={{ opacity: 0.7 }}>({m.count})</span>
+              <span className="filter-btn-label">{m.label}</span>
+              <span className="filter-btn-count">[{m.count}]</span>
             </button>
           );
         })}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SecurityTerminalViz } from "@/components/SecurityTerminalViz";
 
 export const metadata: Metadata = {
-  title: "Medusa 2.0 CTF & Security Lab // CASE STUDY — THEJITHA // LAB",
+  title: "Medusa 2.0 CTF & Security Lab // CASE STUDY — THEJITHA",
   description:
     "Cybersecurity case study: 2nd Runners-up at Medusa 2.0 CTF, Linux POSIX capabilities auditing, web vulnerability triage, and defensive system hardening.",
 };
@@ -14,7 +14,7 @@ export default function SecurityLabCaseStudy() {
       {/* Top Header */}
       <div className="container cs-header">
         <div className="cs-breadcrumbs">
-          <Link href="/">THEJITHA // LAB</Link>
+          <Link href="/">THEJITHA</Link>
           <span>/</span>
           <Link href="/#work">SYS.02 / PROJECTS</Link>
           <span>/</span>

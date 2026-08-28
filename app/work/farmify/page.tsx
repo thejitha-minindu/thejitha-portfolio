@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectPagination } from "@/components/ProjectPagination";
 
 export const metadata: Metadata = {
   title: "Farmify — Case Study | Thejitha Wijayanayake",
@@ -13,7 +14,7 @@ export default function FarmifyCaseStudy() {
       {/* Top Header */}
       <header className="container cs-header">
         <div className="cs-breadcrumbs">
-          <Link href="/">THEJITHA // LAB</Link>
+          <Link href="/">THEJITHA</Link>
           <span>/</span>
           <Link href="/#work">SELECTED WORK</Link>
           <span>/</span>
@@ -137,15 +138,21 @@ export default function FarmifyCaseStudy() {
         </div>
       </section>
 
-      {/* Footer Navigation */}
-      <nav className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "50px", fontFamily: "var(--font-mono)", fontSize: "11px" }}>
-        <Link href="/work/wie" style={{ color: "var(--muted)" }}>
-          ← PREVIOUS: IEEE WIE WEBSITE
-        </Link>
-        <Link href="/research/cosmic-web" style={{ color: "var(--accent)" }}>
-          CURRENT RESEARCH: COSMIC WEB U-NET →
-        </Link>
-      </nav>
+      {/* Project Pagination */}
+      <div className="container">
+        <ProjectPagination
+          previous={{
+            title: "IEEE WIE University of Moratuwa Website",
+            route: "/work/wie",
+          }}
+          next={{
+            title: "Deep Learning the Cosmic Web",
+            route: "/research/cosmic-web",
+          }}
+          returnRoute="/#work"
+          returnLabel="SELECTED WORK"
+        />
+      </div>
     </main>
   );
 }
