@@ -1,8 +1,21 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+});
+
 export const viewport: Viewport = {
-  themeColor: "#080909",
+  themeColor: "#070808",
   width: "device-width",
   initialScale: 1,
 };
@@ -13,7 +26,7 @@ export const metadata: Metadata = {
     "Thejitha Wijayanayake is an Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
   keywords: [
     "Thejitha Wijayanayake",
-    "THEJITHA // LAB",
+    "THEJITHA",
     "Software Engineering",
     "Information Technology",
     "University of Moratuwa",
@@ -33,7 +46,7 @@ export const metadata: Metadata = {
     title: "Thejitha Wijayanayake — Software Engineering Portfolio",
     description:
       "Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
-    siteName: "THEJITHA // LAB",
+    siteName: "THEJITHA",
   },
   twitter: {
     card: "summary_large_image",
@@ -53,8 +66,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

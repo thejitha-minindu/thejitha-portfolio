@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectPagination } from "@/components/ProjectPagination";
 import { KineticHardwareViz } from "@/components/KineticHardwareViz";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function SandPlotterCaseStudy() {
       {/* Top Header */}
       <header className="container cs-header">
         <div className="cs-breadcrumbs">
-          <Link href="/">THEJITHA // LAB</Link>
+          <Link href="/">THEJITHA</Link>
           <span>/</span>
           <Link href="/#work">SELECTED WORK</Link>
           <span>/</span>
@@ -193,15 +194,21 @@ export default function SandPlotterCaseStudy() {
         </div>
       </section>
 
-      {/* Footer Navigation */}
-      <nav className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "50px", fontFamily: "var(--font-mono)", fontSize: "11px" }}>
-        <Link href="/work/teablend-ai" style={{ color: "var(--muted)" }}>
-          ← PREVIOUS: TEABLEND-AI
-        </Link>
-        <Link href="/work/icitr-2026" style={{ color: "var(--accent)" }}>
-          NEXT PROJECT: ICITR 2026 WEBSITE →
-        </Link>
-      </nav>
+      {/* Project Pagination */}
+      <div className="container">
+        <ProjectPagination
+          previous={{
+            title: "TeaBlendAI Auction Platform",
+            route: "/work/teablend-ai",
+          }}
+          next={{
+            title: "ICITR 2026 Conference Website",
+            route: "/work/icitr-2026",
+          }}
+          returnRoute="/#work"
+          returnLabel="SELECTED WORK"
+        />
+      </div>
     </main>
   );
 }

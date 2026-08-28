@@ -356,7 +356,7 @@ export function CommandPalette({
 
         <div className="cmd-footer">
           <span>NAVIGATION: ↑↓ TO SELECT · ENTER TO OPEN</span>
-          <span>THEJITHA // LAB</span>
+          <span>THEJITHA</span>
         </div>
       </div>
     </div>

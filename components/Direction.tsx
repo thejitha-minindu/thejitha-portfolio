@@ -25,19 +25,21 @@ export function Direction({
       aria-pressed={isActive}
     >
       <div className="editorial-focus-top">
-        <span>[{number}]</span>
-        <span style={{ color: isActive ? "var(--accent)" : "var(--dim)" }}>
-          {isActive ? "● ACTIVE" : "SELECT ↗"}
+        <span className="focus-num">[{number}]</span>
+        <span className={`focus-status-badge ${isActive ? "active" : ""}`}>
+          {isActive ? "● FILTER APPLIED" : "FILTER ↗"}
         </span>
       </div>
 
-      <div>
+      <div className="editorial-focus-content">
         <h3 className="editorial-focus-heading">{title}</h3>
         <p className="editorial-focus-desc">{subtitle}</p>
-        <div className="editorial-focus-preview">→ {preview}</div>
+        <div className="editorial-focus-preview">
+          <span className="preview-label">PROJECTS:</span> {preview}
+        </div>
       </div>
 
-      <div className="editorial-focus-line" />
+      <div className="editorial-focus-line" aria-hidden="true" />
     </button>
   );
 }

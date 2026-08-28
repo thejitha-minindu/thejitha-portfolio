@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { TopBar } from "@/components/TopBar";
+import { SideNav } from "@/components/SideNav";
+import { BackToTop } from "@/components/BackToTop";
 import { RecruiterBanner } from "@/components/RecruiterBanner";
 import { CommandPalette } from "@/components/CommandPalette";
 import { CVViewerModal } from "@/components/CVViewerModal";
@@ -124,6 +126,7 @@ export default function Home() {
   const [recruiterMode, setRecruiterMode] = useState<boolean>(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
   const [isCVModalOpen, setIsCVModalOpen] = useState<boolean>(false);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState<boolean>(true);
 
   const filteredProjects =
     activeMode === "ALL"
@@ -152,86 +155,629 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <TopBar
+    <div className="portfolio-layout-root">
+      {/* Desktop Fixed Side Navigation */}
+      <SideNav
+        isExpanded={isSidebarExpanded}
+        onExpandedChange={setIsSidebarExpanded}
         recruiterMode={recruiterMode}
         onToggleRecruiter={() => setRecruiterMode(!recruiterMode)}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
         onOpenCV={() => setIsCVModalOpen(true)}
       />
 
-      {recruiterMode && (
-        <RecruiterBanner
+      {/* Main Content Layout (Offset on Desktop to avoid overlap) */}
+      <div
+        className={`portfolio-main-layout ${
+          isSidebarExpanded ? "sidebar-expanded" : "sidebar-collapsed"
+        }`}
+      >
+        <TopBar
+          recruiterMode={recruiterMode}
+          onToggleRecruiter={() => setRecruiterMode(!recruiterMode)}
+          onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
           onOpenCV={() => setIsCVModalOpen(true)}
-          onClose={() => setRecruiterMode(false)}
         />
-      )}
 
-      <CommandPalette
-        isOpen={isCommandPaletteOpen}
-        onClose={() => setIsCommandPaletteOpen(false)}
-        onSelectMode={(mode) => setActiveMode(mode as NavigationMode)}
-        onToggleRecruiter={() => setRecruiterMode(!recruiterMode)}
-        onOpenCV={() => setIsCVModalOpen(true)}
-      />
+        {recruiterMode && (
+          <RecruiterBanner
+            onOpenCV={() => setIsCVModalOpen(true)}
+            onClose={() => setRecruiterMode(false)}
+          />
+        )}
 
-      <CVViewerModal
-        isOpen={isCVModalOpen}
-        onClose={() => setIsCVModalOpen(false)}
-      />
+        <CommandPalette
+          isOpen={isCommandPaletteOpen}
+          onClose={() => setIsCommandPaletteOpen(false)}
+          onSelectMode={(mode) => setActiveMode(mode as NavigationMode)}
+          onToggleRecruiter={() => setRecruiterMode(!recruiterMode)}
+          onOpenCV={() => setIsCVModalOpen(true)}
+        />
 
-      {/* =========================================================================
-          HERO SECTION
-          ========================================================================= */}
-      <section className="hero container">
-        <div className="system-label">
-          <span>THEJITHA // LAB</span>
-          <span style={{ color: "var(--dim)" }}>·</span>
-          <div className="status-indicator-pill">
-            <span className="status-dot" />
-            <span>AVAILABLE FOR SOFTWARE / IT INTERNSHIPS</span>
-          </div>
-        </div>
+        <CVViewerModal
+          isOpen={isCVModalOpen}
+          onClose={() => setIsCVModalOpen(false)}
+        />
 
-        <div className="hero-grid">
-          <div className="hero-name">
-            <h1>
-              THEJITHA
-              <br />
-              <span>// LAB</span>
-            </h1>
-          </div>
-
-          <div className="hero-description">
-            <div className="hero-discipline-tag">
-              Software Engineering · AI · Systems
+        <main>
+          {/* =========================================================================
+              SYS.00 / HERO SECTION (#home)
+              ========================================================================= */}
+          <section id="home" className="hero container">
+            <div className="system-label">
+              <span>THEJITHA</span>
+              <span style={{ color: "var(--dim)" }}>·</span>
+              <div className="status-indicator-pill">
+                <span className="status-dot" />
+                <span>AVAILABLE FOR SOFTWARE / IT INTERNSHIPS</span>
+              </div>
             </div>
 
-            <p className="hero-lead-text">
-              Third-year Information Technology undergraduate at the University of Moratuwa.
-            </p>
+            <div className="hero-grid">
+              <div className="hero-name">
+                <h1>THEJITHA</h1>
+              </div>
 
-            <p className="hero-sub-text">
-              Building software and hardware systems, exploring AI research, and solving technical problems.
-            </p>
+              <div className="hero-description">
+                <div className="hero-discipline-tag">
+                  Software Engineering · AI · Systems
+                </div>
 
-            <div className="hero-actions">
-              <a href="#work" className="button button-primary">
-                VIEW WORK ↓
-              </a>
+                <p className="hero-lead-text">
+                  Third-year Information Technology undergraduate at the University of Moratuwa.
+                </p>
+
+                <p className="hero-sub-text">
+                  Building software and hardware systems, exploring AI research, and solving technical problems.
+                </p>
+
+                <div className="hero-actions">
+                  <a href="#work" className="button button-primary">
+                    VIEW WORK ↓
+                  </a>
+                  <button
+                    type="button"
+                    className="button"
+                    onClick={() => setIsCVModalOpen(true)}
+                  >
+                    VIEW CV ↗
+                  </button>
+                  <a
+                    href="/Thejitha-CV.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="button"
+                    title="Open PDF directly in new tab"
+                  >
+                    OPEN PDF ↗
+                  </a>
+                  <a
+                    href="/api/download-cv"
+                    download="Thejitha-Wijayanayake-CV.pdf"
+                    className="button"
+                    title="Download CV PDF"
+                  >
+                    DOWNLOAD CV ↓
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="hero-footer-bar">
+              <span>SOFTWARE ENGINEERING</span>
+              <span>FULL-STACK DEVELOPMENT</span>
+              <span>AI / MACHINE LEARNING</span>
+              <span>HARDWARE & EMBEDDED</span>
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.01 / FOCUS: BUILD / EXPLORE / ENGINEER
+              ========================================================================= */}
+          <section className="container section">
+            <SectionLabel code="SYS.01 / FOCUS">
+              ENGINEERING FOCUS AREAS
+            </SectionLabel>
+
+            <div className="editorial-focus-container">
+              <Direction
+                number="01"
+                title="BUILD"
+                subtitle="Software systems"
+                preview="TeaBlendAI · ICITR 2026 · IEEE WIE · Farmify"
+                isActive={activeMode === "BUILD"}
+                onSelect={() => handleSelectDirection("BUILD")}
+              />
+              <Direction
+                number="02"
+                title="EXPLORE"
+                subtitle="AI & research"
+                preview="Deep Learning the Cosmic Web (U-Net Architectures)"
+                isActive={activeMode === "EXPLORE"}
+                onSelect={() => handleSelectDirection("EXPLORE")}
+              />
+              <Direction
+                number="03"
+                title="ENGINEER"
+                subtitle="Hardware & systems"
+                preview="SandPlotter Smart Table (CoreXY + Arduino + ESP32)"
+                isActive={activeMode === "ENGINEER"}
+                onSelect={() => handleSelectDirection("ENGINEER")}
+              />
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.02 / SELECTED WORK (#work)
+              ========================================================================= */}
+          <section id="work" className="container section">
+            <SectionLabel code="SYS.02 / SELECTED WORK">
+              ENGINEERING PROJECTS
+            </SectionLabel>
+
+            <div style={{ marginTop: "32px" }}>
+              <DirectionFilter
+                activeMode={activeMode}
+                onModeChange={(mode) => setActiveMode(mode)}
+                counts={counts}
+              />
+            </div>
+
+            {/* Featured Projects */}
+            {featuredProjects.length > 0 && (
+              <div>
+                <div className="projects-group-header">
+                  <span>FEATURED PROJECTS</span>
+                  <span>[01 – 03]</span>
+                </div>
+                <div className="projects-list">
+                  {featuredProjects.map((project) => (
+                    <ProjectCard key={project.number} project={project} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Secondary Projects */}
+            {secondaryProjects.length > 0 && (
+              <div style={{ marginTop: "40px" }}>
+                <div className="projects-group-header">
+                  <span>SECONDARY PROJECTS</span>
+                  <span>[04 – 05]</span>
+                </div>
+                <div className="projects-list">
+                  {secondaryProjects.map((project) => (
+                    <ProjectCard key={project.number} project={project} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+
+          {/* =========================================================================
+              SYS.03 / CURRENT RESEARCH (#research)
+              ========================================================================= */}
+          <section id="research" className="container section">
+            <SectionLabel code="SYS.03 / RESEARCH">
+              CURRENT RESEARCH NOTEBOOK
+            </SectionLabel>
+
+            <div style={{ marginTop: "32px" }}>
+              <div className="projects-group-header">
+                <span>ACTIVE RESEARCH</span>
+                <span>[06] · RESEARCH IN PROGRESS</span>
+              </div>
+
+              <article className="research-notebook-row">
+                <div className="research-notebook-header">
+                  <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
+                    <span className="project-type-tag">RESEARCH PROJECT · 2026 – PRESENT</span>
+                  </div>
+                  <span className="project-status-tag">STATUS: RESEARCH IN PROGRESS</span>
+                </div>
+
+                <h3 className="editorial-project-title" style={{ margin: "12px 0 16px" }}>
+                  Deep Learning the Cosmic Web: Reconstructing Invisible Dark Matter Structures via U-Net Architectures
+                </h3>
+
+                <p className="editorial-project-desc" style={{ marginBottom: "20px" }}>
+                  Investigating the use of U-Net architectures for reconstructing invisible dark matter structures from observable astronomical data. The research explores deep learning approaches to understanding the large-scale structure of the cosmic web.
+                </p>
+
+                <div className="editorial-contribution-box" style={{ marginBottom: "24px" }}>
+                  <strong>ACTIVE RESEARCH NOTEBOOK</strong>
+                  Research Question → Literature Review → Methodology Design → Experimentation → Evaluation
+                </div>
+
+                <div className="editorial-project-footer">
+                  <div className="tech-tags-list">
+                    <span className="tech-tag">Python</span>
+                    <span className="tech-tag">PyTorch</span>
+                    <span className="tech-tag">3D U-Net</span>
+                    <span className="tech-tag">Deep Learning</span>
+                  </div>
+
+                  <Link href="/research/cosmic-web" className="case-study-link">
+                    <span>VIEW ACTIVE RESEARCH NOTEBOOK</span>
+                    <span>↗</span>
+                  </Link>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.04 / ACADEMIC QUALIFICATIONS
+              ========================================================================= */}
+          <section id="education" className="container section">
+            <SectionLabel code="SYS.04 / EDUCATION">
+              ACADEMIC QUALIFICATIONS
+            </SectionLabel>
+
+            <div className="education-grid">
+              {/* University Degree */}
+              <div className="education-card">
+                <div>
+                  <div className="education-header">
+                    <span>UNDERGRADUATE DEGREE</span>
+                    <span>2024 – PRESENT</span>
+                  </div>
+                  <h3 className="education-title">
+                    B.Sc. (Hons) in Information Technology
+                  </h3>
+                  <p className="education-institution">
+                    University of Moratuwa · Faculty of Information Technology
+                  </p>
+                </div>
+
+                <div className="cgpa-highlight-box">
+                  <div>
+                    <span>CUMULATIVE GPA</span>
+                    <div style={{ color: "var(--dim)", fontSize: "10px" }}>
+                      Out of 4.00 Scale
+                    </div>
+                  </div>
+                  <div className="cgpa-number">3.95 / 4.00</div>
+                </div>
+              </div>
+
+              {/* GCE Advanced Level */}
+              <div className="education-card">
+                <div>
+                  <div className="education-header">
+                    <span>GCE ADVANCED LEVEL</span>
+                    <span>2022</span>
+                  </div>
+                  <h3 className="education-title">
+                    Physical Science Stream
+                  </h3>
+                  <p className="education-institution">
+                    St. Anne&apos;s College, Kurunegala
+                  </p>
+                </div>
+
+                <div className="cgpa-highlight-box">
+                  <div>
+                    <span>RESULTS: A, B, B</span>
+                    <div style={{ color: "var(--dim)", fontSize: "10px" }}>
+                      Physics: A · Combined Math: B · Chemistry: B
+                    </div>
+                  </div>
+                  <div className="cgpa-number" style={{ fontSize: "20px" }}>
+                    Z-SCORE: 1.6692
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.05 / TECHNICAL SKILLS (#skills)
+              ========================================================================= */}
+          <section id="skills" className="container section">
+            <SectionLabel code="SYS.05 / TECHNICAL SKILLS">
+              VERIFIED TECHNOLOGIES & COMPETENCIES
+            </SectionLabel>
+
+            <div className="skills-editorial-grid">
+              <div className="skills-category-block">
+                <div className="skills-category-header">
+                  <span className="skills-category-pip" aria-hidden="true" />
+                  <span className="skills-category-title">PROGRAMMING</span>
+                </div>
+                <div className="skills-pills-list">
+                  {["C", "Python", "Java", "JavaScript", "TypeScript", "PHP"].map((s) => (
+                    <span key={s} className="skill-pill">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="skills-category-block">
+                <div className="skills-category-header">
+                  <span className="skills-category-pip" aria-hidden="true" />
+                  <span className="skills-category-title">FRONTEND</span>
+                </div>
+                <div className="skills-pills-list">
+                  {["Next.js", "React.js", "Tailwind CSS", "HTML5", "CSS3"].map((s) => (
+                    <span key={s} className="skill-pill">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="skills-category-block">
+                <div className="skills-category-header">
+                  <span className="skills-category-pip" aria-hidden="true" />
+                  <span className="skills-category-title">BACKEND</span>
+                </div>
+                <div className="skills-pills-list">
+                  {["FastAPI", "Node.js"].map((s) => (
+                    <span key={s} className="skill-pill">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="skills-category-block">
+                <div className="skills-category-header">
+                  <span className="skills-category-pip" aria-hidden="true" />
+                  <span className="skills-category-title">DATABASE</span>
+                </div>
+                <div className="skills-pills-list">
+                  {["MSSQL", "MySQL", "MongoDB", "PostgreSQL"].map((s) => (
+                    <span key={s} className="skill-pill">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="skills-category-block">
+                <div className="skills-category-header">
+                  <span className="skills-category-pip" aria-hidden="true" />
+                  <span className="skills-category-title">TOOLS / PLATFORMS</span>
+                </div>
+                <div className="skills-pills-list">
+                  {["Git", "GitHub", "Linux", "Arduino IDE", "Flutter"].map((s) => (
+                    <span key={s} className="skill-pill">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="skills-category-block">
+                <div className="skills-category-header">
+                  <span className="skills-category-pip" aria-hidden="true" />
+                  <span className="skills-category-title">INTERPERSONAL</span>
+                </div>
+                <div className="skills-pills-list">
+                  {["Problem Solving", "Time Management", "Self-Learning", "Teamwork"].map((s) => (
+                    <span key={s} className="skill-pill">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.06 / COMPETITIONS & CHALLENGES (#competitions)
+              ========================================================================= */}
+          <section id="competitions" className="container section">
+            <SectionLabel code="SYS.06 / COMPETITIONS">
+              COMPETITIONS // CHALLENGES
+            </SectionLabel>
+
+            <div className="competitions-grid">
+              <div>
+                <div className="competition-entry">
+                  <span className="competition-badge">2ND RUNNERS-UP</span>
+                  <div className="competition-body">
+                    <h4>Medusa 2.0 (2025)</h4>
+                    <p>National cybersecurity CTF competition organized by ECSC, University of Kelaniya</p>
+                  </div>
+                </div>
+
+                <div className="competition-entry">
+                  <span className="competition-badge">SEMI-FINALIST</span>
+                  <div className="competition-body">
+                    <h4>SPARK Challenge (2026)</h4>
+                    <p>ENTC Innovation Project Competition, University of Moratuwa</p>
+                  </div>
+                </div>
+
+                <div className="competition-entry">
+                  <span className="competition-badge">9TH PLACE</span>
+                  <div className="competition-body">
+                    <h4>SHErlock 2.0</h4>
+                    <p>Organized by IEEE WIE of IIT</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="contests-participation-box">
+                <h4>CODING CONTEST PARTICIPATION</h4>
+                <div className="contests-list">
+                  <div>
+                    <span>ALGOXPLORE 1.0</span>
+                    <span style={{ color: "var(--muted)" }}>Competitive Programming</span>
+                  </div>
+                  <div>
+                    <span>MoraXtreme 9.0</span>
+                    <span style={{ color: "var(--muted)" }}>IEEEXtreme Prep Contest</span>
+                  </div>
+                  <div>
+                    <span>CodeRush 2022</span>
+                    <span style={{ color: "var(--muted)" }}>Algorithmic Problem Solving</span>
+                  </div>
+                  <div>
+                    <span>MoraXtreme 10.0</span>
+                    <span style={{ color: "var(--muted)" }}>IEEEXtreme Prep Contest</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.07 / UNIVERSITY INVOLVEMENT
+              ========================================================================= */}
+          <section id="involvement" className="container section">
+            <SectionLabel code="SYS.07 / INVOLVEMENT">
+              UNIVERSITY INVOLVEMENT
+            </SectionLabel>
+
+            <div className="involvement-grid">
+              <div className="involvement-card">
+                <div>
+                  <div className="involvement-role">ICITR Web Development Team</div>
+                  <div className="involvement-org">Faculty of IT, Univ. of Moratuwa</div>
+                </div>
+                <div className="involvement-date">2026</div>
+              </div>
+
+              <div className="involvement-card">
+                <div>
+                  <div className="involvement-role">Mobile App Development Team</div>
+                  <div className="involvement-org">Team 25/26</div>
+                </div>
+                <div className="involvement-date">2025 – 2026</div>
+              </div>
+
+              <div className="involvement-card">
+                <div>
+                  <div className="involvement-role">IEEE WIE Web Development Team</div>
+                  <div className="involvement-org">IEEE Student Branch Affinity Group</div>
+                </div>
+                <div className="involvement-date">2025</div>
+              </div>
+
+              <div className="involvement-card">
+                <div>
+                  <div className="involvement-role">Faculty Coordinator</div>
+                  <div className="involvement-org">SEDS Mora Chapter (Team 25/26)</div>
+                </div>
+                <div className="involvement-date">2025 – 2026</div>
+              </div>
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.08 / ABOUT & INTERNSHIP POSITIONING (#about)
+              ========================================================================= */}
+          <section id="about" className="container section">
+            <SectionLabel code="SYS.08 / ABOUT">
+              PROFILE & INTERNSHIP POSITIONING
+            </SectionLabel>
+
+            <div className="about-grid">
+              <div className="about-headline">
+                <h2>
+                  BUILDING SYSTEMS
+                  <br />
+                  WITH HARDWARE
+                  <br />
+                  <span>& SOFTWARE.</span>
+                </h2>
+              </div>
+
+              <div className="about-body">
+                <p>
+                  Undergraduate student in Information Technology at the University of Moratuwa, with coursework and projects covering programming, hardware interfacing, and software development.
+                </p>
+                <p>
+                  Actively engaged in building real-world systems that combine hardware and software concepts, while continuously developing technical and analytical skills through practical projects and self-learning.
+                </p>
+
+                <div className="profile-meta-list">
+                  <div>
+                    <span>STATUS</span>
+                    <strong style={{ color: "var(--accent)" }}>Third-Year IT Undergraduate</strong>
+                  </div>
+                  <div>
+                    <span>OPPORTUNITY</span>
+                    <strong style={{ color: "var(--accent)" }}>Open to Software / IT Internships</strong>
+                  </div>
+                  <div>
+                    <span>POTENTIAL AREAS</span>
+                    <strong>Software Engineering · Full-Stack · AI / ML · Systems / Embedded</strong>
+                  </div>
+                  <div>
+                    <span>UNIVERSITY</span>
+                    <strong>University of Moratuwa (CGPA: 3.95 / 4.00)</strong>
+                  </div>
+                  <div>
+                    <span>LOCATION</span>
+                    <strong>Kuliyapitiya, Sri Lanka</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* =========================================================================
+              SYS.09 / CONTACT & CTA (#contact)
+              ========================================================================= */}
+          <section id="contact" className="container cta-section">
+            <div className="cta-tag">SYS.09 / OPEN CHANNEL</div>
+            <h2 className="cta-title">
+              AVAILABLE FOR
+              <br />
+              SOFTWARE / IT
+              <br />
+              <span>INTERNSHIPS.</span>
+            </h2>
+
+            <div className="cta-contact-details">
+              <div>
+                <span>FULL NAME</span>
+                <strong>Thejitha Wijayanayake</strong>
+              </div>
+              <div>
+                <span>EMAIL</span>
+                <a href="mailto:thejithamininduw@gmail.com">thejithamininduw@gmail.com</a>
+              </div>
+              <div>
+                <span>PHONE</span>
+                <a href="tel:+94714756551">+94 71 475 6551</a>
+              </div>
+              <div>
+                <span>LOCATION</span>
+                <strong>Kuliyapitiya, Sri Lanka</strong>
+              </div>
+              <div>
+                <span>GITHUB</span>
+                <a href="https://github.com/thejitha-minindu" target="_blank" rel="noreferrer">
+                  github.com/thejitha-minindu ↗
+                </a>
+              </div>
+              <div>
+                <span>LINKEDIN</span>
+                <a href="https://www.linkedin.com/in/thejitha-wijayanayake" target="_blank" rel="noreferrer">
+                  linkedin.com/in/thejitha-wijayanayake ↗
+                </a>
+              </div>
+            </div>
+
+            <div className="cta-button-row">
               <button
                 type="button"
-                className="button"
+                className="button button-primary"
                 onClick={() => setIsCVModalOpen(true)}
               >
-                VIEW CV ↗
+                VIEW WEB CV ↗
               </button>
               <a
                 href="/Thejitha-CV.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="button"
-                title="Open PDF directly in new tab"
               >
                 OPEN PDF ↗
               </a>
@@ -239,505 +785,28 @@ export default function Home() {
                 href="/api/download-cv"
                 download="Thejitha-Wijayanayake-CV.pdf"
                 className="button"
-                title="Download CV PDF"
               >
-                DOWNLOAD CV ↓
+                DOWNLOAD CV (PDF) ↓
+              </a>
+              <a href="mailto:thejithamininduw@gmail.com" className="button button-accent">
+                SEND EMAIL ↗
               </a>
             </div>
-          </div>
-        </div>
+          </section>
 
-        <div className="hero-footer-bar">
-          <span>SOFTWARE ENGINEERING</span>
-          <span>FULL-STACK DEVELOPMENT</span>
-          <span>AI / MACHINE LEARNING</span>
-          <span>HARDWARE & EMBEDDED</span>
-        </div>
-      </section>
+          {/* =========================================================================
+              FOOTER
+              ========================================================================= */}
+          <footer className="container footer">
+            <span>© 2026 THEJITHA WIJAYANAYAKE</span>
+            <span>THEJITHA · UNIVERSITY OF MORATUWA</span>
+            <span style={{ color: "var(--accent)" }}>● SYSTEM ONLINE</span>
+          </footer>
+        </main>
 
-      {/* =========================================================================
-          SYS.01 / FOCUS: BUILD / EXPLORE / ENGINEER
-          ========================================================================= */}
-      <section className="container section">
-        <SectionLabel code="SYS.01 / FOCUS">
-          ENGINEERING FOCUS AREAS
-        </SectionLabel>
-
-        <div className="editorial-focus-container">
-          <Direction
-            number="01"
-            title="BUILD"
-            subtitle="Software systems"
-            preview="TeaBlendAI · ICITR 2026 · IEEE WIE · Farmify"
-            isActive={activeMode === "BUILD"}
-            onSelect={() => handleSelectDirection("BUILD")}
-          />
-          <Direction
-            number="02"
-            title="EXPLORE"
-            subtitle="AI & research"
-            preview="Deep Learning the Cosmic Web (U-Net Architectures)"
-            isActive={activeMode === "EXPLORE"}
-            onSelect={() => handleSelectDirection("EXPLORE")}
-          />
-          <Direction
-            number="03"
-            title="ENGINEER"
-            subtitle="Hardware & systems"
-            preview="SandPlotter Smart Table (CoreXY + Arduino + ESP32)"
-            isActive={activeMode === "ENGINEER"}
-            onSelect={() => handleSelectDirection("ENGINEER")}
-          />
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SYS.02 / SELECTED WORK
-          ========================================================================= */}
-      <section id="work" className="container section">
-        <SectionLabel code="SYS.02 / SELECTED WORK">
-          ENGINEERING PROJECTS & RESEARCH
-        </SectionLabel>
-
-        <div style={{ marginTop: "32px" }}>
-          <DirectionFilter
-            activeMode={activeMode}
-            onModeChange={(mode) => setActiveMode(mode)}
-            counts={counts}
-          />
-        </div>
-
-        {/* Featured Projects */}
-        {featuredProjects.length > 0 && (
-          <div>
-            <div className="projects-group-header">
-              <span>FEATURED PROJECTS</span>
-              <span>[01 – 03]</span>
-            </div>
-            <div className="projects-list">
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.number} project={project} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Secondary Projects */}
-        {secondaryProjects.length > 0 && (
-          <div style={{ marginTop: "40px" }}>
-            <div className="projects-group-header">
-              <span>SECONDARY PROJECTS</span>
-              <span>[04 – 05]</span>
-            </div>
-            <div className="projects-list">
-              {secondaryProjects.map((project) => (
-                <ProjectCard key={project.number} project={project} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Current Research */}
-        {researchProjects.length > 0 && (
-          <div id="research" style={{ marginTop: "60px" }}>
-            <div className="projects-group-header">
-              <span>CURRENT RESEARCH</span>
-              <span>[06] · RESEARCH IN PROGRESS</span>
-            </div>
-
-            <article className="research-notebook-row">
-              <div className="research-notebook-header">
-                <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
-                  <span className="project-type-tag">RESEARCH PROJECT · 2026 – PRESENT</span>
-                </div>
-                <span className="project-status-tag">STATUS: RESEARCH IN PROGRESS</span>
-              </div>
-
-              <h3 className="editorial-project-title" style={{ margin: "12px 0 16px" }}>
-                Deep Learning the Cosmic Web: Reconstructing Invisible Dark Matter Structures via U-Net Architectures
-              </h3>
-
-              <p className="editorial-project-desc" style={{ marginBottom: "20px" }}>
-                Investigating the use of U-Net architectures for reconstructing invisible dark matter structures from observable astronomical data. The research explores deep learning approaches to understanding the large-scale structure of the cosmic web.
-              </p>
-
-              <div className="editorial-contribution-box" style={{ marginBottom: "24px" }}>
-                <strong>ACTIVE RESEARCH NOTEBOOK</strong>
-                Research Question → Literature Review → Methodology Design → Experimentation → Evaluation
-              </div>
-
-              <div className="editorial-project-footer">
-                <div className="tech-tags-list">
-                  <span className="tech-tag">Python</span>
-                  <span className="tech-tag">PyTorch</span>
-                  <span className="tech-tag">3D U-Net</span>
-                  <span className="tech-tag">Deep Learning</span>
-                </div>
-
-                <Link href="/research/cosmic-web" className="case-study-link">
-                  <span>VIEW ACTIVE RESEARCH NOTEBOOK</span>
-                  <span>↗</span>
-                </Link>
-              </div>
-            </article>
-          </div>
-        )}
-      </section>
-
-      {/* =========================================================================
-          SYS.03 / EDUCATION
-          ========================================================================= */}
-      <section id="education" className="container section">
-        <SectionLabel code="SYS.03 / EDUCATION">
-          ACADEMIC QUALIFICATIONS
-        </SectionLabel>
-
-        <div className="education-grid">
-          {/* University Degree */}
-          <div className="education-card">
-            <div>
-              <div className="education-header">
-                <span>UNDERGRADUATE DEGREE</span>
-                <span>2024 – PRESENT</span>
-              </div>
-              <h3 className="education-title">
-                B.Sc. (Hons) in Information Technology
-              </h3>
-              <p className="education-institution">
-                University of Moratuwa · Faculty of Information Technology
-              </p>
-            </div>
-
-            <div className="cgpa-highlight-box">
-              <div>
-                <span>CUMULATIVE GPA</span>
-                <div style={{ color: "var(--dim)", fontSize: "10px" }}>
-                  Out of 4.00 Scale
-                </div>
-              </div>
-              <div className="cgpa-number">3.95 / 4.00</div>
-            </div>
-          </div>
-
-          {/* GCE Advanced Level */}
-          <div className="education-card">
-            <div>
-              <div className="education-header">
-                <span>GCE ADVANCED LEVEL</span>
-                <span>2022</span>
-              </div>
-              <h3 className="education-title">
-                Physical Science Stream
-              </h3>
-              <p className="education-institution">
-                St. Anne&apos;s College, Kurunegala
-              </p>
-            </div>
-
-            <div className="cgpa-highlight-box">
-              <div>
-                <span>RESULTS: A, B, B</span>
-                <div style={{ color: "var(--dim)", fontSize: "10px" }}>
-                  Physics: A · Combined Math: B · Chemistry: B
-                </div>
-              </div>
-              <div className="cgpa-number" style={{ fontSize: "20px" }}>
-                Z-SCORE: 1.6692
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SYS.04 / SKILLS
-          ========================================================================= */}
-      <section id="skills" className="container section">
-        <SectionLabel code="SYS.04 / TECHNICAL SKILLS">
-          VERIFIED TECHNOLOGIES & COMPETENCIES
-        </SectionLabel>
-
-        <div className="skills-editorial-grid">
-          <div className="skills-category-block">
-            <span className="skills-category-title">PROGRAMMING</span>
-            <p className="skills-list-text">
-              C · Python · Java · JavaScript · TypeScript · PHP
-            </p>
-          </div>
-
-          <div className="skills-category-block">
-            <span className="skills-category-title">FRONTEND</span>
-            <p className="skills-list-text">
-              Next.js · React.js · Tailwind CSS · HTML5 · CSS3
-            </p>
-          </div>
-
-          <div className="skills-category-block">
-            <span className="skills-category-title">BACKEND</span>
-            <p className="skills-list-text">
-              FastAPI · Node.js
-            </p>
-          </div>
-
-          <div className="skills-category-block">
-            <span className="skills-category-title">DATABASE</span>
-            <p className="skills-list-text">
-              MSSQL · MySQL · MongoDB · PostgreSQL
-            </p>
-          </div>
-
-          <div className="skills-category-block">
-            <span className="skills-category-title">TOOLS / PLATFORMS</span>
-            <p className="skills-list-text">
-              Git · GitHub · Linux · Arduino IDE · Flutter
-            </p>
-          </div>
-
-          <div className="skills-category-block">
-            <span className="skills-category-title">INTERPERSONAL</span>
-            <p className="skills-list-text">
-              Problem Solving · Time Management · Self-Learning · Teamwork
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SYS.05 / COMPETITIONS & CHALLENGES
-          ========================================================================= */}
-      <section id="competitions" className="container section">
-        <SectionLabel code="SYS.05 / COMPETITIONS">
-          COMPETITIONS // CHALLENGES
-        </SectionLabel>
-
-        <div className="competitions-grid">
-          <div>
-            <div className="competition-entry">
-              <span className="competition-badge">2ND RUNNERS-UP</span>
-              <div className="competition-body">
-                <h4>Medusa 2.0 (2025)</h4>
-                <p>National cybersecurity CTF competition organized by ECSC, University of Kelaniya</p>
-              </div>
-            </div>
-
-            <div className="competition-entry">
-              <span className="competition-badge">SEMI-FINALIST</span>
-              <div className="competition-body">
-                <h4>SPARK Challenge (2026)</h4>
-                <p>ENTC Innovation Project Competition, University of Moratuwa</p>
-              </div>
-            </div>
-
-            <div className="competition-entry">
-              <span className="competition-badge">9TH PLACE</span>
-              <div className="competition-body">
-                <h4>SHErlock 2.0</h4>
-                <p>Organized by IEEE WIE of IIT</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="contests-participation-box">
-            <h4>CODING CONTEST PARTICIPATION</h4>
-            <div className="contests-list">
-              <div>
-                <span>ALGOXPLORE 1.0</span>
-                <span style={{ color: "var(--muted)" }}>Competitive Programming</span>
-              </div>
-              <div>
-                <span>MoraXtreme 9.0</span>
-                <span style={{ color: "var(--muted)" }}>IEEEXtreme Prep Contest</span>
-              </div>
-              <div>
-                <span>CodeRush 2022</span>
-                <span style={{ color: "var(--muted)" }}>Algorithmic Problem Solving</span>
-              </div>
-              <div>
-                <span>MoraXtreme 10.0</span>
-                <span style={{ color: "var(--muted)" }}>IEEEXtreme Prep Contest</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SYS.06 / UNIVERSITY INVOLVEMENT
-          ========================================================================= */}
-      <section className="container section">
-        <SectionLabel code="SYS.06 / INVOLVEMENT">
-          UNIVERSITY INVOLVEMENT
-        </SectionLabel>
-
-        <div className="involvement-grid">
-          <div className="involvement-card">
-            <div>
-              <div className="involvement-role">ICITR Web Development Team</div>
-              <div className="involvement-org">Faculty of IT, Univ. of Moratuwa</div>
-            </div>
-            <div className="involvement-date">2026</div>
-          </div>
-
-          <div className="involvement-card">
-            <div>
-              <div className="involvement-role">Mobile App Development Team</div>
-              <div className="involvement-org">Team 25/26</div>
-            </div>
-            <div className="involvement-date">2025 – 2026</div>
-          </div>
-
-          <div className="involvement-card">
-            <div>
-              <div className="involvement-role">IEEE WIE Web Development Team</div>
-              <div className="involvement-org">IEEE Student Branch Affinity Group</div>
-            </div>
-            <div className="involvement-date">2025</div>
-          </div>
-
-          <div className="involvement-card">
-            <div>
-              <div className="involvement-role">Faculty Coordinator</div>
-              <div className="involvement-org">SEDS Mora Chapter (Team 25/26)</div>
-            </div>
-            <div className="involvement-date">2025 – 2026</div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SYS.07 / ABOUT & INTERNSHIP POSITIONING
-          ========================================================================= */}
-      <section id="about" className="container section">
-        <SectionLabel code="SYS.07 / ABOUT">
-          PROFILE & INTERNSHIP POSITIONING
-        </SectionLabel>
-
-        <div className="about-grid">
-          <div className="about-headline">
-            <h2>
-              BUILDING SYSTEMS
-              <br />
-              WITH HARDWARE
-              <br />
-              <span>& SOFTWARE.</span>
-            </h2>
-          </div>
-
-          <div className="about-body">
-            <p>
-              Undergraduate student in Information Technology at the University of Moratuwa, with coursework and projects covering programming, hardware interfacing, and software development.
-            </p>
-            <p>
-              Actively engaged in building real-world systems that combine hardware and software concepts, while continuously developing technical and analytical skills through practical projects and self-learning.
-            </p>
-
-            <div className="profile-meta-list">
-              <div>
-                <span>STATUS</span>
-                <strong style={{ color: "var(--accent)" }}>Third-Year IT Undergraduate</strong>
-              </div>
-              <div>
-                <span>OPPORTUNITY</span>
-                <strong style={{ color: "var(--accent)" }}>Open to Software / IT Internships</strong>
-              </div>
-              <div>
-                <span>POTENTIAL AREAS</span>
-                <strong>Software Engineering · Full-Stack · AI / ML · Systems / Embedded</strong>
-              </div>
-              <div>
-                <span>UNIVERSITY</span>
-                <strong>University of Moratuwa (CGPA: 3.95 / 4.00)</strong>
-              </div>
-              <div>
-                <span>LOCATION</span>
-                <strong>Kuliyapitiya, Sri Lanka</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SYS.08 / CONTACT & CTA
-          ========================================================================= */}
-      <section id="contact" className="container cta-section">
-        <div className="cta-tag">SYS.08 / OPEN CHANNEL</div>
-        <h2 className="cta-title">
-          AVAILABLE FOR
-          <br />
-          SOFTWARE / IT
-          <br />
-          <span>INTERNSHIPS.</span>
-        </h2>
-
-        <div className="cta-contact-details">
-          <div>
-            <span>FULL NAME</span>
-            <strong>Thejitha Wijayanayake</strong>
-          </div>
-          <div>
-            <span>EMAIL</span>
-            <a href="mailto:thejithamininduw@gmail.com">thejithamininduw@gmail.com</a>
-          </div>
-          <div>
-            <span>PHONE</span>
-            <a href="tel:+94714756551">+94 71 475 6551</a>
-          </div>
-          <div>
-            <span>LOCATION</span>
-            <strong>Kuliyapitiya, Sri Lanka</strong>
-          </div>
-          <div>
-            <span>GITHUB</span>
-            <a href="https://github.com/thejitha-minindu" target="_blank" rel="noreferrer">
-              github.com/thejitha-minindu ↗
-            </a>
-          </div>
-          <div>
-            <span>LINKEDIN</span>
-            <a href="https://www.linkedin.com/in/thejitha-wijayanayake" target="_blank" rel="noreferrer">
-              linkedin.com/in/thejitha-wijayanayake ↗
-            </a>
-          </div>
-        </div>
-
-        <div className="cta-button-row">
-          <button
-            type="button"
-            className="button button-primary"
-            onClick={() => setIsCVModalOpen(true)}
-          >
-            VIEW WEB CV ↗
-          </button>
-          <a
-            href="/Thejitha-CV.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="button"
-          >
-            OPEN PDF ↗
-          </a>
-          <a
-            href="/api/download-cv"
-            download="Thejitha-Wijayanayake-CV.pdf"
-            className="button"
-          >
-            DOWNLOAD CV (PDF) ↓
-          </a>
-          <a href="mailto:thejithamininduw@gmail.com" className="button button-accent">
-            SEND EMAIL ↗
-          </a>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          FOOTER
-          ========================================================================= */}
-      <footer className="container footer">
-        <span>© 2026 THEJITHA WIJAYANAYAKE</span>
-        <span>THEJITHA // LAB · UNIVERSITY OF MORATUWA</span>
-        <span style={{ color: "var(--accent)" }}>● SYSTEM ONLINE</span>
-      </footer>
-    </main>
+        {/* Back to Top Control */}
+        <BackToTop />
+      </div>
+    </div>
   );
 }

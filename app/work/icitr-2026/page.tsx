@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectPagination } from "@/components/ProjectPagination";
 
 export const metadata: Metadata = {
   title: "ICITR 2026 Conference Website — Case Study | Thejitha Wijayanayake",
@@ -13,7 +14,7 @@ export default function ICITRCaseStudy() {
       {/* Top Header */}
       <header className="container cs-header">
         <div className="cs-breadcrumbs">
-          <Link href="/">THEJITHA // LAB</Link>
+          <Link href="/">THEJITHA</Link>
           <span>/</span>
           <Link href="/#work">SELECTED WORK</Link>
           <span>/</span>
@@ -170,15 +171,21 @@ export default function ICITRCaseStudy() {
         </div>
       </section>
 
-      {/* Footer Navigation */}
-      <nav className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "50px", fontFamily: "var(--font-mono)", fontSize: "11px" }}>
-        <Link href="/work/sandplotter" style={{ color: "var(--muted)" }}>
-          ← PREVIOUS: SANDPLOTTER SMART COFFEE TABLE
-        </Link>
-        <Link href="/work/wie" style={{ color: "var(--accent)" }}>
-          NEXT PROJECT: IEEE WIE WEBSITE →
-        </Link>
-      </nav>
+      {/* Project Pagination */}
+      <div className="container">
+        <ProjectPagination
+          previous={{
+            title: "SandPlotter Smart Coffee Table",
+            route: "/work/sandplotter",
+          }}
+          next={{
+            title: "IEEE WIE University of Moratuwa Website",
+            route: "/work/wie",
+          }}
+          returnRoute="/#work"
+          returnLabel="SELECTED WORK"
+        />
+      </div>
     </main>
   );
 }
