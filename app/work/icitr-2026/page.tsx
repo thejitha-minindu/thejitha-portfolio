@@ -4,7 +4,7 @@ import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 
 export const metadata: Metadata = {
-  title: "ICITR 2026 Conference Website — Case Study | Thejitha Wijayanayake",
+  title: "ICITR 2026 Case Study",
   description:
     "Web development case study by Thejitha Wijayanayake: Official platform for International Conference on Information Technology Research (Faculty of IT, University of Moratuwa) using Next.js & Tailwind CSS.",
   alternates: {
