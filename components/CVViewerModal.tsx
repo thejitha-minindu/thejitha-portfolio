@@ -50,7 +50,7 @@ export function CVViewerModal({ isOpen, onClose }: CVViewerModalProps) {
               target="_blank"
               rel="noreferrer"
               className="button"
-              style={{ padding: "6px 12px", fontSize: "10px" }}
+              style={{ minHeight: "38px", padding: "8px 12px", fontSize: "10px" }}
               title="Open PDF in new tab"
             >
               OPEN PDF ↗
@@ -59,7 +59,7 @@ export function CVViewerModal({ isOpen, onClose }: CVViewerModalProps) {
               href="/api/download-cv"
               download="Thejitha-Wijayanayake-CV.pdf"
               className="button button-primary"
-              style={{ padding: "6px 12px", fontSize: "10px" }}
+              style={{ minHeight: "38px", padding: "8px 12px", fontSize: "10px" }}
               title="Download PDF file"
             >
               DOWNLOAD PDF ↓
@@ -67,7 +67,7 @@ export function CVViewerModal({ isOpen, onClose }: CVViewerModalProps) {
             <Link
               href="/cv"
               className="button"
-              style={{ padding: "6px 12px", fontSize: "10px" }}
+              style={{ minHeight: "38px", padding: "8px 12px", fontSize: "10px" }}
               onClick={onClose}
               title="View standalone CV page"
             >

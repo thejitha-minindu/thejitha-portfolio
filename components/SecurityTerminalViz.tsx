@@ -180,7 +180,7 @@ export function SecurityTerminalViz() {
           </span>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "20px", fontSize: "12px", color: "#b7b9b4", lineHeight: "1.5" }}>
+        <div className="security-inspector-grid">
           <div>
             <span style={{ display: "block", color: "var(--accent)", fontSize: "9px", marginBottom: "3px" }}>
               REMEDIATION & MITIGATION

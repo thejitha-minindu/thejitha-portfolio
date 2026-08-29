@@ -110,37 +110,39 @@ export default function SecurityLabCaseStudy() {
             </p>
           </div>
 
-          <table className="decision-table">
-            <thead>
-              <tr>
-                <th>VULNERABILITY VECTOR</th>
-                <th>INVESTIGATION METHOD</th>
-                <th>DEFENSIVE REMEDIATION</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Network Surface Exposure</strong></td>
-                <td>Nmap service version detection (`-sV`) and default script scans (`-sC`).</td>
-                <td>Enforce strict firewall rules (UFW default deny incoming), bind internal services to loopback (`127.0.0.1`), and proxy traffic through TLS reverse proxies.</td>
-              </tr>
-              <tr>
-                <td><strong>Unsanitized API Inputs</strong></td>
-                <td>Payload injection testing on HTTP JSON endpoints with boundary conditions.</td>
-                <td>Adopt parameterized prepared statements and strict Pydantic/ORM data validation models to neutralize injection vectors.</td>
-              </tr>
-              <tr>
-                <td><strong>POSIX Capabilities (`CAP_SETUID`)</strong></td>
-                <td>Auditing extended file attributes using `getcap -r / 2&gt;/dev/null`.</td>
-                <td>Strip unnecessary capabilities from system binaries using `setcap -r` and run background processes with dedicated unprivileged user accounts.</td>
-              </tr>
-              <tr>
-                <td><strong>Host Hardening</strong></td>
-                <td>Configuration reviews of SSH daemon, system permissions, and services.</td>
-                <td>Disable root SSH login, enforce key-based authentication, and enable AppArmor confinement profiles.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="decision-table-wrap">
+            <table className="decision-table">
+              <thead>
+                <tr>
+                  <th>VULNERABILITY VECTOR</th>
+                  <th>INVESTIGATION METHOD</th>
+                  <th>DEFENSIVE REMEDIATION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Network Surface Exposure</strong></td>
+                  <td>Nmap service version detection (`-sV`) and default script scans (`-sC`).</td>
+                  <td>Enforce strict firewall rules (UFW default deny incoming), bind internal services to loopback (`127.0.0.1`), and proxy traffic through TLS reverse proxies.</td>
+                </tr>
+                <tr>
+                  <td><strong>Unsanitized API Inputs</strong></td>
+                  <td>Payload injection testing on HTTP JSON endpoints with boundary conditions.</td>
+                  <td>Adopt parameterized prepared statements and strict Pydantic/ORM data validation models to neutralize injection vectors.</td>
+                </tr>
+                <tr>
+                  <td><strong>POSIX Capabilities (`CAP_SETUID`)</strong></td>
+                  <td>Auditing extended file attributes using `getcap -r / 2&gt;/dev/null`.</td>
+                  <td>Strip unnecessary capabilities from system binaries using `setcap -r` and run background processes with dedicated unprivileged user accounts.</td>
+                </tr>
+                <tr>
+                  <td><strong>Host Hardening</strong></td>
+                  <td>Configuration reviews of SSH daemon, system permissions, and services.</td>
+                  <td>Disable root SSH login, enforce key-based authentication, and enable AppArmor confinement profiles.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* Section 4: Key Competencies */}

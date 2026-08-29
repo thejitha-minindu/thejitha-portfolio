@@ -138,7 +138,7 @@ export function TeaBlendArchViz() {
           <span style={{ color: "var(--accent)", fontSize: "10px" }}>INDUSTRY PROJECT · INIVOIS GLOBAL</span>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", color: "#b7b9b4", fontSize: "12px", lineHeight: "1.5" }}>
+        <div className="viz-detail-grid">
           <div>
             <span style={{ display: "block", color: "var(--muted)", fontSize: "9px", marginBottom: "4px" }}>
               DESCRIPTION & SCOPE

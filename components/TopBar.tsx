@@ -138,7 +138,12 @@ export function TopBar({
       >
         <div className="mobile-nav-backdrop" onClick={() => setIsMobileMenuOpen(false)} />
 
-        <div className="mobile-nav-drawer">
+        <div
+          className="mobile-nav-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation Menu"
+        >
           <div className="mobile-nav-header">
             <div className="mobile-brand">
               <span>THEJITHA</span>

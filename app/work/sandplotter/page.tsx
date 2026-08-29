@@ -139,42 +139,44 @@ export default function SandPlotterCaseStudy() {
             <span>04 / TECHNOLOGY STACK & HARDWARE</span>
             <span>EMBEDDED SYSTEM ARCHITECTURE</span>
           </div>
-          <table className="decision-table">
-            <thead>
-              <tr>
-                <th>SUBSYSTEM</th>
-                <th>HARDWARE / TOOL</th>
-                <th>TECHNICAL PURPOSE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Motion Controller</strong></td>
-                <td>Arduino Uno + CNC Shield V3</td>
-                <td>Executes GRBL firmware to generate real-time step and direction pulses for stepper motors.</td>
-              </tr>
-              <tr>
-                <td><strong>Motor Drivers</strong></td>
-                <td>A4988 Stepper Drivers</td>
-                <td>Provides microstepping control and current regulation for the dual NEMA 17 motors.</td>
-              </tr>
-              <tr>
-                <td><strong>Kinematic Mechanism</strong></td>
-                <td>CoreXY Gantry + GT2 Belts</td>
-                <td>Keeps both motors stationary, reducing gantry moving mass and ensuring smooth 2D vector movement.</td>
-              </tr>
-              <tr>
-                <td><strong>Wireless & Interface</strong></td>
-                <td>ESP32 + TFT Touch Display</td>
-                <td>Hosts the WebSocket server for the web control app and drives the on-device touchscreen.</td>
-              </tr>
-              <tr>
-                <td><strong>Firmware & Protocol</strong></td>
-                <td>GRBL & G-code</td>
-                <td>Translates geometric vector coordinates into physical motor steps with limit switch homing.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="decision-table-wrap">
+            <table className="decision-table">
+              <thead>
+                <tr>
+                  <th>SUBSYSTEM</th>
+                  <th>HARDWARE / TOOL</th>
+                  <th>TECHNICAL PURPOSE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Motion Controller</strong></td>
+                  <td>Arduino Uno + CNC Shield V3</td>
+                  <td>Executes GRBL firmware to generate real-time step and direction pulses for stepper motors.</td>
+                </tr>
+                <tr>
+                  <td><strong>Motor Drivers</strong></td>
+                  <td>A4988 Stepper Drivers</td>
+                  <td>Provides microstepping control and current regulation for the dual NEMA 17 motors.</td>
+                </tr>
+                <tr>
+                  <td><strong>Kinematic Mechanism</strong></td>
+                  <td>CoreXY Gantry + GT2 Belts</td>
+                  <td>Keeps both motors stationary, reducing gantry moving mass and ensuring smooth 2D vector movement.</td>
+                </tr>
+                <tr>
+                  <td><strong>Wireless & Interface</strong></td>
+                  <td>ESP32 + TFT Touch Display</td>
+                  <td>Hosts the WebSocket server for the web control app and drives the on-device touchscreen.</td>
+                </tr>
+                <tr>
+                  <td><strong>Firmware & Protocol</strong></td>
+                  <td>GRBL & G-code</td>
+                  <td>Translates geometric vector coordinates into physical motor steps with limit switch homing.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* 5. What I Built: Hardware Architecture Visualizer */}

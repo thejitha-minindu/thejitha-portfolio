@@ -122,27 +122,29 @@ export default function FarmifyCaseStudy() {
             <span>04 / TECHNOLOGY STACK</span>
             <span>REACT & SERVERLESS SERVICES</span>
           </div>
-          <table className="decision-table">
-            <thead>
-              <tr>
-                <th>COMPONENT</th>
-                <th>TECHNOLOGY</th>
-                <th>ENGINEERING RATIONALE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Frontend</strong></td>
-                <td>React.js</td>
-                <td>Enables interactive single-page component rendering and reactive state updates.</td>
-              </tr>
-              <tr>
-                <td><strong>Backend & Database</strong></td>
-                <td>Firebase</td>
-                <td>Provides real-time document synchronization and managed authentication without server maintenance overhead.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="decision-table-wrap">
+            <table className="decision-table">
+              <thead>
+                <tr>
+                  <th>COMPONENT</th>
+                  <th>TECHNOLOGY</th>
+                  <th>ENGINEERING RATIONALE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Frontend</strong></td>
+                  <td>React.js</td>
+                  <td>Enables interactive single-page component rendering and reactive state updates.</td>
+                </tr>
+                <tr>
+                  <td><strong>Backend & Database</strong></td>
+                  <td>Firebase</td>
+                  <td>Provides real-time document synchronization and managed authentication without server maintenance overhead.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* 5. What I Learned */}
