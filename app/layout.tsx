@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Thejitha Wijayanayake | Software Engineer",
+    default: "Thejitha Wijayanayake",
     template: "%s | Thejitha Wijayanayake",
   },
   description:
