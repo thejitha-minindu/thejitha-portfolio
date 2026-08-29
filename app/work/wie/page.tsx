@@ -4,9 +4,27 @@ import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 
 export const metadata: Metadata = {
-  title: "IEEE WIE Case Study",
+  title: "IEEE WIE University of Moratuwa Website — Case Study | Thejitha Wijayanayake",
   description:
-    "Official website for IEEE Women in Engineering Student Branch Affinity Group of University of Moratuwa built with Next.js and Tailwind CSS.",
+    "Web development case study by Thejitha Wijayanayake: Official platform for IEEE Women in Engineering (WIE) Student Branch Affinity Group, University of Moratuwa built with Next.js & Tailwind CSS.",
+  alternates: {
+    canonical: "/work/wie",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "/work/wie",
+    siteName: "Thejitha Wijayanayake",
+    title: "IEEE WIE University of Moratuwa Website — Case Study | Thejitha Wijayanayake",
+    description:
+      "Web development case study by Thejitha Wijayanayake: Official platform for IEEE Women in Engineering (WIE) Student Branch Affinity Group, University of Moratuwa built with Next.js & Tailwind CSS.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IEEE WIE University of Moratuwa Website — Case Study | Thejitha Wijayanayake",
+    description:
+      "Web development case study by Thejitha Wijayanayake: Official platform for IEEE Women in Engineering (WIE) Student Branch Affinity Group, University of Moratuwa built with Next.js & Tailwind CSS.",
+  },
 };
 
 export default function WIEWebsiteCaseStudy() {

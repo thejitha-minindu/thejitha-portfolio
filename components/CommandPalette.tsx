@@ -90,6 +90,28 @@ export function CommandPalette({
         onClose();
       },
     },
+    {
+      id: "cs-security-lab",
+      title: "Medusa 2.0 CTF & Security Lab",
+      category: "PROJECTS",
+      description: "Cybersecurity case study: 2nd Runners-up at Medusa 2.0 CTF, Linux POSIX capabilities & hardening",
+      badge: "CASE STUDY",
+      action: () => {
+        router.push("/projects/security-lab");
+        onClose();
+      },
+    },
+    {
+      id: "page-about",
+      title: "About Thejitha Wijayanayake",
+      category: "SECTIONS",
+      description: "Undergraduate IT student profile, background, competencies, and engineering journey",
+      badge: "PAGE",
+      action: () => {
+        router.push("/about");
+        onClose();
+      },
+    },
     // Current Research
     {
       id: "cs-cosmic",

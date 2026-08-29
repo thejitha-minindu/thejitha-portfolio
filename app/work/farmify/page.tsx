@@ -4,9 +4,27 @@ import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 
 export const metadata: Metadata = {
-  title: "Farmify Case Study",
+  title: "Farmify Agricultural Platform — Case Study | Thejitha Wijayanayake",
   description:
-    "Agricultural expertise and marketplace web application connecting farmers with resources using React.js and Firebase.",
+    "Web development case study by Thejitha Wijayanayake: Agricultural marketplace & advisory application connecting farmers with resources using React.js & Firebase real-time database.",
+  alternates: {
+    canonical: "/work/farmify",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "/work/farmify",
+    siteName: "Thejitha Wijayanayake",
+    title: "Farmify Agricultural Platform — Case Study | Thejitha Wijayanayake",
+    description:
+      "Web development case study by Thejitha Wijayanayake: Agricultural marketplace & advisory application connecting farmers with resources using React.js & Firebase real-time database.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Farmify Agricultural Platform — Case Study | Thejitha Wijayanayake",
+    description:
+      "Web development case study by Thejitha Wijayanayake: Agricultural marketplace & advisory application connecting farmers with resources using React.js & Firebase real-time database.",
+  },
 };
 
 export default function FarmifyCaseStudy() {

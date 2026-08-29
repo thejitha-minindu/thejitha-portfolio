@@ -5,9 +5,27 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 import { KineticHardwareViz } from "@/components/KineticHardwareViz";
 
 export const metadata: Metadata = {
-  title: "SandPlotter Case Study",
+  title: "SandPlotter Smart Coffee Table (Kinetic Hardware) — Case Study | Thejitha Wijayanayake",
   description:
-    "First Year Hardware Project: Interactive SandPlotter Smart Coffee Table combining CoreXY kinematics, Arduino Uno (GRBL), ESP32 WebSockets, TFT touch display, and CNC Shield V3.",
+    "Hardware engineering case study of SandPlotter by Thejitha Wijayanayake: Interactive kinetic sand table combining CoreXY kinematics, Arduino Uno GRBL, ESP32 WebSockets, and TFT touch control.",
+  alternates: {
+    canonical: "/work/sandplotter",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "/work/sandplotter",
+    siteName: "Thejitha Wijayanayake",
+    title: "SandPlotter Smart Coffee Table (Kinetic Hardware) — Case Study | Thejitha Wijayanayake",
+    description:
+      "Hardware engineering case study of SandPlotter by Thejitha Wijayanayake: Interactive kinetic sand table combining CoreXY kinematics, Arduino Uno GRBL, ESP32 WebSockets, and TFT touch control.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SandPlotter Smart Coffee Table — Case Study | Thejitha Wijayanayake",
+    description:
+      "Hardware engineering case study of SandPlotter by Thejitha Wijayanayake: Interactive kinetic sand table combining CoreXY kinematics, Arduino Uno GRBL, ESP32 WebSockets, and TFT touch control.",
+  },
 };
 
 export default function SandPlotterCaseStudy() {

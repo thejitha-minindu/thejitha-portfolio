@@ -215,7 +215,10 @@ export default function Home() {
 
             <div className="hero-grid">
               <div className="hero-name">
-                <h1>THEJITHA</h1>
+                <h1>
+                  THEJITHA
+                  <span className="hero-surname">WIJAYANAYAKE</span>
+                </h1>
               </div>
 
               <div className="hero-description">
@@ -678,13 +681,13 @@ export default function Home() {
 
             <div className="about-grid">
               <div className="about-headline">
-                <h2>
+                <h3>
                   BUILDING SYSTEMS
                   <br />
                   WITH HARDWARE
                   <br />
                   <span>& SOFTWARE.</span>
-                </h2>
+                </h3>
               </div>
 
               <div className="about-body">
