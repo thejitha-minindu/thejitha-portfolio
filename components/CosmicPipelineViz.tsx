@@ -121,7 +121,7 @@ export function CosmicPipelineViz() {
             </span>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", fontSize: "12px", color: "#b7b9b4", lineHeight: "1.6" }}>
+          <div className="viz-detail-grid">
             <div>
               <span style={{ display: "block", color: "var(--muted)", fontSize: "9px", marginBottom: "3px" }}>
                 RESEARCH OBJECTIVE

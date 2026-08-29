@@ -331,7 +331,18 @@ export function CommandPalette({
           <button
             type="button"
             onClick={onClose}
-            style={{ color: "var(--muted)", fontSize: "11px", fontFamily: "var(--font-mono)" }}
+            style={{
+              color: "var(--muted)",
+              fontSize: "10px",
+              fontFamily: "var(--font-mono)",
+              minWidth: "40px",
+              minHeight: "32px",
+              background: "var(--surface)",
+              border: "1px solid var(--line)",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+            aria-label="Close command palette"
           >
             ESC
           </button>

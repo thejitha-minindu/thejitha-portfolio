@@ -122,32 +122,34 @@ export default function WIEWebsiteCaseStudy() {
             <span>04 / TECHNOLOGY STACK</span>
             <span>TOOLS & FRAMEWORKS</span>
           </div>
-          <table className="decision-table">
-            <thead>
-              <tr>
-                <th>COMPONENT</th>
-                <th>CHOICE</th>
-                <th>ENGINEERING RATIONALE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Frontend Framework</strong></td>
-                <td>Next.js</td>
-                <td>Component reusability across event showcases, committee cards, and fast page rendering.</td>
-              </tr>
-              <tr>
-                <td><strong>Styling</strong></td>
-                <td>Tailwind CSS</td>
-                <td>Enables rapid responsive utility styling and consistent brand typography.</td>
-              </tr>
-              <tr>
-                <td><strong>Version Control</strong></td>
-                <td>GitHub</td>
-                <td>Facilitates team coordination and branch reviews.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="decision-table-wrap">
+            <table className="decision-table">
+              <thead>
+                <tr>
+                  <th>COMPONENT</th>
+                  <th>CHOICE</th>
+                  <th>ENGINEERING RATIONALE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Frontend Framework</strong></td>
+                  <td>Next.js</td>
+                  <td>Component reusability across event showcases, committee cards, and fast page rendering.</td>
+                </tr>
+                <tr>
+                  <td><strong>Styling</strong></td>
+                  <td>Tailwind CSS</td>
+                  <td>Enables rapid responsive utility styling and consistent brand typography.</td>
+                </tr>
+                <tr>
+                  <td><strong>Version Control</strong></td>
+                  <td>GitHub</td>
+                  <td>Facilitates team coordination and branch reviews.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* 5. What I Learned */}

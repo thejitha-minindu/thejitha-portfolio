@@ -148,37 +148,39 @@ export default function TeaBlendCaseStudy() {
             </p>
           </div>
 
-          <table className="decision-table">
-            <thead>
-              <tr>
-                <th>LAYER</th>
-                <th>TECHNOLOGY</th>
-                <th>ENGINEERING RATIONALE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Frontend</strong></td>
-                <td>Next.js</td>
-                <td>Provides component-driven UI architecture, efficient client routing, and responsive dashboard layouts for tea producers.</td>
-              </tr>
-              <tr>
-                <td><strong>Backend API</strong></td>
-                <td>FastAPI (Python)</td>
-                <td>Offers asynchronous request execution, automatic OpenAPI schema documentation, and robust request validation for auction workflows.</td>
-              </tr>
-              <tr>
-                <td><strong>Database</strong></td>
-                <td>Microsoft SQL Server (MSSQL)</td>
-                <td>Enterprise relational database ensuring ACID transactional integrity, relational schema enforcement, and reliable ledger storage.</td>
-              </tr>
-              <tr>
-                <td><strong>AI Assistant</strong></td>
-                <td>AI Chatbot</td>
-                <td>Integrated chatbot assistant to answer user questions, explain auction rules, and assist participants navigating the marketplace.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="decision-table-wrap">
+            <table className="decision-table">
+              <thead>
+                <tr>
+                  <th>LAYER</th>
+                  <th>TECHNOLOGY</th>
+                  <th>ENGINEERING RATIONALE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Frontend</strong></td>
+                  <td>Next.js</td>
+                  <td>Provides component-driven UI architecture, efficient client routing, and responsive dashboard layouts for tea producers.</td>
+                </tr>
+                <tr>
+                  <td><strong>Backend API</strong></td>
+                  <td>FastAPI (Python)</td>
+                  <td>Offers asynchronous request execution, automatic OpenAPI schema documentation, and robust request validation for auction workflows.</td>
+                </tr>
+                <tr>
+                  <td><strong>Database</strong></td>
+                  <td>Microsoft SQL Server (MSSQL)</td>
+                  <td>Enterprise relational database ensuring ACID transactional integrity, relational schema enforcement, and reliable ledger storage.</td>
+                </tr>
+                <tr>
+                  <td><strong>AI Assistant</strong></td>
+                  <td>AI Chatbot</td>
+                  <td>Integrated chatbot assistant to answer user questions, explain auction rules, and assist participants navigating the marketplace.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* 5. What I Built & Interactive Visualizer */}

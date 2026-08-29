@@ -141,32 +141,34 @@ export default function ICITRCaseStudy() {
             <span>04 / TECHNOLOGY STACK</span>
             <span>MODERN WEB TOOLCHAIN</span>
           </div>
-          <table className="decision-table">
-            <thead>
-              <tr>
-                <th>COMPONENT</th>
-                <th>CHOICE</th>
-                <th>ENGINEERING RATIONALE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Frontend Framework</strong></td>
-                <td>Next.js</td>
-                <td>Enables fast static page rendering for conference information, modular components, and optimal SEO.</td>
-              </tr>
-              <tr>
-                <td><strong>Styling & Layout</strong></td>
-                <td>Tailwind CSS</td>
-                <td>Provides consistent typographic scale, accessible color contrast, and rapid mobile-first responsiveness.</td>
-              </tr>
-              <tr>
-                <td><strong>Version Control</strong></td>
-                <td>GitHub</td>
-                <td>Enables structured team collaboration, branch staging, and pull request reviews across developers.</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="decision-table-wrap">
+            <table className="decision-table">
+              <thead>
+                <tr>
+                  <th>COMPONENT</th>
+                  <th>CHOICE</th>
+                  <th>ENGINEERING RATIONALE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Frontend Framework</strong></td>
+                  <td>Next.js</td>
+                  <td>Enables fast static page rendering for conference information, modular components, and optimal SEO.</td>
+                </tr>
+                <tr>
+                  <td><strong>Styling & Layout</strong></td>
+                  <td>Tailwind CSS</td>
+                  <td>Provides consistent typographic scale, accessible color contrast, and rapid mobile-first responsiveness.</td>
+                </tr>
+                <tr>
+                  <td><strong>Version Control</strong></td>
+                  <td>GitHub</td>
+                  <td>Enables structured team collaboration, branch staging, and pull request reviews across developers.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* 5. What I Built & Challenges */}
