@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 
 export const metadata: Metadata = {
-  title: "Curriculum Vitae (PDF) | Thejitha Wijayanayake",
+  title: "Curriculum Vitae",
   description:
     "Curriculum Vitae of Thejitha Wijayanayake, Third-Year Information Technology Undergraduate at University of Moratuwa. View or download the verified PDF.",
 };

@@ -21,7 +21,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Thejitha Wijayanayake — Software Engineering Portfolio",
+  title: {
+    default: "Thejitha Wijayanayake",
+    template: "%s | Thejitha Wijayanayake",
+  },
   description:
     "Thejitha Wijayanayake is an Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
   keywords: [
@@ -39,18 +42,26 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Thejitha Wijayanayake", url: "https://github.com/thejitha-minindu" }],
   creator: "Thejitha Wijayanayake",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://thejitha-lab.dev",
-    title: "Thejitha Wijayanayake — Software Engineering Portfolio",
+    title: "Thejitha Wijayanayake",
     description:
       "Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
     siteName: "THEJITHA",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thejitha Wijayanayake — Software Engineering Portfolio",
+    title: "Thejitha Wijayanayake",
     description:
       "Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
   },

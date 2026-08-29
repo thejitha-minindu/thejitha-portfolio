@@ -5,7 +5,7 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 import { CosmicPipelineViz } from "@/components/CosmicPipelineViz";
 
 export const metadata: Metadata = {
-  title: "Cosmic Web Research (In Progress) | Thejitha Wijayanayake",
+  title: "Cosmic Web Research",
   description:
     "Active undergraduate research project: Deep Learning the Cosmic Web — Reconstructing Invisible Dark Matter Structures via U-Net Architectures.",
 };

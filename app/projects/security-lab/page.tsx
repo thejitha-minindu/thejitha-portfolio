@@ -5,7 +5,7 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 import { SecurityTerminalViz } from "@/components/SecurityTerminalViz";
 
 export const metadata: Metadata = {
-  title: "Medusa 2.0 CTF & Security Lab // CASE STUDY — THEJITHA",
+  title: "Medusa 2.0 CTF & Security Lab",
   description:
     "Cybersecurity case study: 2nd Runners-up at Medusa 2.0 CTF, Linux POSIX capabilities auditing, web vulnerability triage, and defensive system hardening.",
 };
