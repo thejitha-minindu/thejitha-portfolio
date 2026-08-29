@@ -6,7 +6,25 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 export const metadata: Metadata = {
   title: "ICITR 2026 Conference Website — Case Study | Thejitha Wijayanayake",
   description:
-    "Official website for the International Conference on Information Technology Research (Faculty of IT, University of Moratuwa) using Next.js, Tailwind CSS, and GitHub.",
+    "Web development case study by Thejitha Wijayanayake: Official platform for International Conference on Information Technology Research (Faculty of IT, University of Moratuwa) using Next.js & Tailwind CSS.",
+  alternates: {
+    canonical: "/work/icitr-2026",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "/work/icitr-2026",
+    siteName: "Thejitha Wijayanayake",
+    title: "ICITR 2026 Conference Website — Case Study | Thejitha Wijayanayake",
+    description:
+      "Web development case study by Thejitha Wijayanayake: Official platform for International Conference on Information Technology Research (Faculty of IT, University of Moratuwa) using Next.js & Tailwind CSS.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ICITR 2026 Conference Website — Case Study | Thejitha Wijayanayake",
+    description:
+      "Web development case study by Thejitha Wijayanayake: Official platform for International Conference on Information Technology Research (Faculty of IT, University of Moratuwa) using Next.js & Tailwind CSS.",
+  },
 };
 
 export default function ICITRCaseStudy() {

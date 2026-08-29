@@ -3,9 +3,27 @@ import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 
 export const metadata: Metadata = {
-  title: "Curriculum Vitae (PDF) | Thejitha Wijayanayake",
+  title: "Curriculum Vitae (CV) | Thejitha Wijayanayake — Software Engineer",
   description:
-    "Curriculum Vitae of Thejitha Wijayanayake, Third-Year Information Technology Undergraduate at University of Moratuwa. View or download the verified PDF.",
+    "Official Curriculum Vitae of Thejitha Wijayanayake, Third-Year Information Technology Undergraduate at University of Moratuwa. View or download the verified CV PDF.",
+  alternates: {
+    canonical: "/cv",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "/cv",
+    siteName: "Thejitha Wijayanayake",
+    title: "Curriculum Vitae (CV) | Thejitha Wijayanayake — Software Engineer",
+    description:
+      "Official Curriculum Vitae of Thejitha Wijayanayake, Third-Year Information Technology Undergraduate at University of Moratuwa. View or download the verified CV PDF.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Curriculum Vitae (CV) | Thejitha Wijayanayake",
+    description:
+      "Official Curriculum Vitae of Thejitha Wijayanayake, Third-Year Information Technology Undergraduate at University of Moratuwa. View or download the verified CV PDF.",
+  },
 };
 
 export default function CVPage() {

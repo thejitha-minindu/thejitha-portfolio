@@ -5,9 +5,27 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 import { CosmicPipelineViz } from "@/components/CosmicPipelineViz";
 
 export const metadata: Metadata = {
-  title: "Cosmic Web Research (In Progress) | Thejitha Wijayanayake",
+  title: "Deep Learning the Cosmic Web (Dark Matter Reconstruction) — Research | Thejitha Wijayanayake",
   description:
-    "Active undergraduate research project: Deep Learning the Cosmic Web — Reconstructing Invisible Dark Matter Structures via U-Net Architectures.",
+    "Undergraduate astrophysics & deep learning research by Thejitha Wijayanayake: Reconstructing invisible dark matter structures via 3D U-Net neural architectures.",
+  alternates: {
+    canonical: "/research/cosmic-web",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "/research/cosmic-web",
+    siteName: "Thejitha Wijayanayake",
+    title: "Deep Learning the Cosmic Web — Research | Thejitha Wijayanayake",
+    description:
+      "Undergraduate astrophysics & deep learning research by Thejitha Wijayanayake: Reconstructing invisible dark matter structures via 3D U-Net neural architectures.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deep Learning the Cosmic Web — Research | Thejitha Wijayanayake",
+    description:
+      "Undergraduate astrophysics & deep learning research by Thejitha Wijayanayake: Reconstructing invisible dark matter structures via 3D U-Net neural architectures.",
+  },
 };
 
 export default function CosmicWebCaseStudy() {

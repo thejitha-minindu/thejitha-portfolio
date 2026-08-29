@@ -1089,6 +1089,16 @@ button {
   -webkit-text-fill-color: transparent;
 }
 
+.hero-name .hero-surname {
+  display: block;
+  font-size: 0.54em;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  color: var(--text-lead);
+  -webkit-text-fill-color: var(--text-lead);
+  margin-top: 6px;
+}
+
 .hero-description {
   max-width: 560px;
 }
@@ -2046,7 +2056,8 @@ button {
   align-items: center;
 }
 
-.about-headline h2 {
+.about-headline h2,
+.about-headline h3 {
   margin: 0;
   font-size: clamp(36px, 4.8vw, 68px);
   line-height: 0.95;
@@ -2055,7 +2066,8 @@ button {
   color: var(--text-bright);
 }
 
-.about-headline h2 span {
+.about-headline h2 span,
+.about-headline h3 span {
   color: var(--muted);
 }
 

@@ -5,9 +5,27 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 import { TeaBlendArchViz } from "@/components/TeaBlendArchViz";
 
 export const metadata: Metadata = {
-  title: "TeaBlendAI — Case Study | Thejitha Wijayanayake",
+  title: "TeaBlendAI: AI-Powered Tea Auction Platform — Case Study | Thejitha Wijayanayake",
   description:
-    "Engineering case study for TeaBlendAI: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
+    "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
+  alternates: {
+    canonical: "/work/teablend-ai",
+  },
+  openGraph: {
+    type: "article",
+    locale: "en_US",
+    url: "/work/teablend-ai",
+    siteName: "Thejitha Wijayanayake",
+    title: "TeaBlendAI: AI-Powered Tea Auction Platform — Case Study | Thejitha Wijayanayake",
+    description:
+      "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TeaBlendAI — Case Study | Thejitha Wijayanayake",
+    description:
+      "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
+  },
 };
 
 export default function TeaBlendCaseStudy() {

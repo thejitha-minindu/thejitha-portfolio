@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,6 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://thejitha-portfolio.vercel.app";
+
 export const viewport: Viewport = {
   themeColor: "#070808",
   width: "device-width",
@@ -21,42 +25,67 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Thejitha Wijayanayake — Software Engineering Portfolio",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Thejitha Wijayanayake | Software Engineer",
+    template: "%s | Thejitha Wijayanayake",
+  },
   description:
-    "Thejitha Wijayanayake is an Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
+    "Thejitha Wijayanayake is an Information Technology undergraduate at the University of Moratuwa interested in software engineering, artificial intelligence, cybersecurity, and research.",
   keywords: [
     "Thejitha Wijayanayake",
-    "THEJITHA",
+    "Thejitha Wijayanayake Software Engineer",
+    "Thejitha Wijayanayake University of Moratuwa",
+    "Thejitha Wijayanayake Portfolio",
     "Software Engineering",
     "Information Technology",
     "University of Moratuwa",
     "Next.js",
     "FastAPI",
     "MSSQL",
-    "CoreXY",
+    "Machine Learning",
+    "Cybersecurity",
     "Deep Learning",
-    "Internship",
   ],
-  authors: [{ name: "Thejitha Wijayanayake", url: "https://github.com/thejitha-minindu" }],
+  authors: [
+    {
+      name: "Thejitha Wijayanayake",
+      url: "https://github.com/thejitha-minindu",
+    },
+  ],
   creator: "Thejitha Wijayanayake",
+  publisher: "Thejitha Wijayanayake",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://thejitha-lab.dev",
-    title: "Thejitha Wijayanayake — Software Engineering Portfolio",
+    url: "/",
+    siteName: "Thejitha Wijayanayake",
+    title: "Thejitha Wijayanayake | Software Engineer",
     description:
-      "Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
-    siteName: "THEJITHA",
+      "Thejitha Wijayanayake is an Information Technology undergraduate at the University of Moratuwa interested in software engineering, artificial intelligence, cybersecurity, and research.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thejitha Wijayanayake — Software Engineering Portfolio",
+    title: "Thejitha Wijayanayake | Software Engineer",
     description:
-      "Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and hardware systems.",
+      "Thejitha Wijayanayake is an Information Technology undergraduate at the University of Moratuwa interested in software engineering, artificial intelligence, cybersecurity, and research.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google092690344991e23a",
   },
 };
 
@@ -67,7 +96,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <JsonLd />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
 }
+
