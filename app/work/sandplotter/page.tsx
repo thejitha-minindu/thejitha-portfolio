@@ -5,7 +5,7 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 import { KineticHardwareViz } from "@/components/KineticHardwareViz";
 
 export const metadata: Metadata = {
-  title: "SandPlotter Smart Coffee Table — Case Study | Thejitha Wijayanayake",
+  title: "SandPlotter Case Study",
   description:
     "First Year Hardware Project: Interactive SandPlotter Smart Coffee Table combining CoreXY kinematics, Arduino Uno (GRBL), ESP32 WebSockets, TFT touch display, and CNC Shield V3.",
 };

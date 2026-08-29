@@ -5,7 +5,7 @@ import { ProjectPagination } from "@/components/ProjectPagination";
 import { TeaBlendArchViz } from "@/components/TeaBlendArchViz";
 
 export const metadata: Metadata = {
-  title: "TeaBlendAI — Case Study | Thejitha Wijayanayake",
+  title: "TeaBlendAI Case Study",
   description:
     "Engineering case study for TeaBlendAI: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
 };

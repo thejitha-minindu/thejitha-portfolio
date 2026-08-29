@@ -4,7 +4,7 @@ import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 
 export const metadata: Metadata = {
-  title: "Farmify — Case Study | Thejitha Wijayanayake",
+  title: "Farmify Case Study",
   description:
     "Agricultural expertise and marketplace web application connecting farmers with resources using React.js and Firebase.",
 };

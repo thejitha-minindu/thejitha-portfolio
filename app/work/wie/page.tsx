@@ -4,9 +4,9 @@ import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 
 export const metadata: Metadata = {
-  title: "IEEE WIE Website — Case Study | Thejitha Wijayanayake",
+  title: "IEEE WIE Case Study",
   description:
-    "Official website for IEEE Women in Engineering (WIE) Student Branch Affinity Group, University of Moratuwa built with Next.js, Tailwind CSS, and GitHub.",
+    "Official website for IEEE Women in Engineering Student Branch Affinity Group of University of Moratuwa built with Next.js and Tailwind CSS.",
 };
 
 export default function WIEWebsiteCaseStudy() {
