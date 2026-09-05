@@ -483,6 +483,14 @@ export default function Home() {
                 </div>
 
                 <div className="competition-entry">
+                  <span className="competition-badge">4TH PLACE</span>
+                  <div className="competition-body">
+                    <h4>VECTRA (2026)</h4>
+                    <p>Attack-and-Defence CTF organized by IEEE WIE, Informatics Institute of Technology (IIT) involving web security, reverse engineering, and cryptographic vulnerability assessment</p>
+                  </div>
+                </div>
+
+                <div className="competition-entry">
                   <span className="competition-badge">SEMI-FINALIST</span>
                   <div className="competition-body">
                     <h4>SPARK Challenge (2026)</h4>

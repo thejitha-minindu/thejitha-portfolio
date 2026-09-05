@@ -173,7 +173,7 @@ export function CommandPalette({
       id: "sec-competitions",
       title: "Jump to Competitions // Challenges",
       category: "SECTIONS",
-      description: "Medusa 2.0 (2nd Runners-up), SPARK Challenge, SHErlock 2.0",
+      description: "Medusa 2.0 (2nd Runners-up), VECTRA 2026 (4th Place), SPARK Challenge, SHErlock 2.0",
       action: () => {
         const el = document.getElementById("competitions");
         if (el) el.scrollIntoView({ behavior: "smooth" });
