@@ -22,14 +22,14 @@ I am an undergraduate student in Information Technology at the University of Mor
 - **Type**: Industry Project (Inivois Global) · Team Project
 - **Timeline**: December 2025 – June 2026
 - **Stack**: Next.js, FastAPI, MSSQL
-- **Role & Contribution**: Full-stack development of the **Seller Module**, including seller dashboard interfaces, live/scheduled auction workflows, backend REST API design, and database schema modelling.
+- **Role & Contribution**: Full-stack development of the **Seller Module** and the **Buyer-Seller Messaging System**, including seller dashboard interfaces, live/scheduled auction workflows, trade chat negotiations, backend REST API design, and database schema modelling.
 - **Route**: [`/work/teablend-ai`](app/work/teablend-ai/page.tsx)
 
 ### 02. SandPlotter Smart Coffee Table
 - **Type**: First Year Hardware Project · Individual & Team Prototyping
 - **Timeline**: August 2024 – August 2025
-- **Stack**: Arduino Uno, ESP32, GRBL Firmware, CoreXY Kinematics, TFT Touch Display, WebSockets, CNC Shield V3
-- **Role & Contribution**: Designed and assembled the CoreXY motion mechanism using NEMA 17 stepper motors, GT2 timing belts, A4988 stepper drivers, and limit switches integrated with GRBL on Arduino Uno. Implemented ESP32 WebSocket bridge and TFT touch control to transmit G-code coordinate streams.
+- **Stack**: Arduino Uno, ESP32, GRBL Firmware, CoreXY Kinematics, Custom PCB, TFT Touch Display, WebSockets, CNC Shield V3
+- **Role & Contribution**: Designed and assembled the CoreXY motion mechanism using NEMA 17 stepper motors, GT2 timing belts, TMC2208/A4988 stepper drivers, and limit switches integrated with GRBL on Arduino Uno. Designed and fabricated a custom controller PCB for the table's motorized automated drawer with single push-button open/close toggle control. Implemented ESP32 WebSocket bridge and TFT touch control to transmit G-code coordinate streams.
 - **Route**: [`/work/sandplotter`](app/work/sandplotter/page.tsx)
 
 ### 03. ICITR 2026 Conference Website

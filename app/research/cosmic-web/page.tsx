@@ -3,6 +3,9 @@ import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 import { CosmicPipelineViz } from "@/components/CosmicPipelineViz";
+import { ProjectCover } from "@/components/ProjectCover";
+import { ProjectMediaGallery } from "@/components/ProjectMediaGallery";
+import { getProjectBySlug } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Deep Learning the Cosmic Web (Dark Matter Reconstruction) — Research | Thejitha Wijayanayake",
@@ -29,6 +32,8 @@ export const metadata: Metadata = {
 };
 
 export default function CosmicWebCaseStudy() {
+  const project = getProjectBySlug("cosmic-web");
+
   return (
     <CaseStudyShell>
       <main>
@@ -63,7 +68,7 @@ export default function CosmicWebCaseStudy() {
             </div>
             <div>
               <span>PRIMARY FOCUS</span>
-              <strong>U-Net Spatial Reconstruction from Astronomical Data</strong>
+              <strong>3D U-Net Spatial Reconstruction from Astronomical Data</strong>
             </div>
             <div>
               <span>TIMELINE & STATUS</span>
@@ -71,6 +76,12 @@ export default function CosmicWebCaseStudy() {
             </div>
           </div>
         </header>
+
+        {/* Hero Cover Image (Gracefully rendered when asset is available) */}
+        <ProjectCover
+          cover={project?.coverImage}
+          projectTitle="Deep Learning the Cosmic Web"
+        />
 
         {/* 1. Research Question & Context */}
         <section className="container cs-content-section">
@@ -83,7 +94,7 @@ export default function CosmicWebCaseStudy() {
               In modern cosmological physics, dark matter makes up the dominant matter content of the universe, forming a vast, filamentary web that guides galaxy formation and cluster evolution. However, dark matter does not interact with the electromagnetic spectrum and cannot be imaged directly with telescopes.
             </p>
             <p>
-              Astronomical surveys only directly observe luminous baryonic matter—such as galaxies and gas. This research investigates whether deep learning encoder-decoder architectures, particularly U-Net variants, can learn non-linear spatial mappings to reconstruct underlying continuous dark matter density fields from observable astronomical tracer data.
+              Astronomical surveys only directly observe luminous baryonic matter—such as galaxies and gas. This research investigates whether deep learning encoder-decoder architectures, particularly 3D U-Net variants, can learn non-linear spatial mappings to reconstruct underlying continuous dark matter density fields from observable astronomical tracer data.
             </p>
           </div>
         </section>
@@ -149,10 +160,18 @@ export default function CosmicWebCaseStudy() {
           </div>
         </section>
 
+        {/* 04 / Research Visuals Gallery (Gracefully omitted until experimental results exist) */}
+        <ProjectMediaGallery
+          media={project?.media}
+          sectionNumber="04"
+          sectionTitle="RESEARCH VISUALIZATIONS & ARTIFACTS"
+          sectionSubtitle="EMPIRICAL VALIDATION & EXPERIMENTAL RESULTS"
+        />
+
         {/* 4. Current Status */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
-            <span>04 / CURRENT STATUS & RESEARCH NOTE</span>
+            <span>05 / CURRENT STATUS & RESEARCH NOTE</span>
             <span>HONEST DISCLOSURE</span>
           </div>
           <div className="cs-text-body">

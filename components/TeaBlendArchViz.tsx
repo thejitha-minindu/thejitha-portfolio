@@ -59,8 +59,19 @@ export function TeaBlendArchViz() {
         "Enterprise relational database housing normalized schemas for tea lots, seller profiles, auction catalogues, bids, and settlement records.",
       tech: "Microsoft SQL Server (MSSQL), Relational Data Models",
       responsibilities: "Relational data persistence, foreign-key referential integrity, transaction logging, indexed lot queries.",
-      dataFlow: "Stores structured entity tables: Users, Estates, TeaLots, Auctions, Bids, Settlements.",
+      dataFlow: "Stores structured entity tables: Users, Estates, TeaLots, Auctions, Bids, Settlements, Chats.",
       architectureRole: "Reliable, ACID-compliant enterprise storage foundation for the trading platform.",
+    },
+    {
+      id: "trade-messaging",
+      name: "Buyer-Seller Messaging System",
+      type: "COMMUNICATION MODULE",
+      description:
+        "Direct bilateral messaging channel connecting tea estate sellers and registered buyers for real-time post-auction negotiations, payment inquiries, and logistics coordination.",
+      tech: "Next.js, TypeScript, FastAPI, WebSockets, MSSQL",
+      responsibilities: "Real-time message exchange, trade conversation threading, order context linking, chat history persistence.",
+      dataFlow: "Bilateral WebSocket / REST events synchronized between buyer and seller portals with MSSQL persistence.",
+      architectureRole: "Enables direct trade communication and streamlined post-auction order fulfillment.",
     },
     {
       id: "ai-chatbot",
@@ -80,7 +91,8 @@ export function TeaBlendArchViz() {
     { num: 2, name: "2. FastAPI Layer", node: "api-backend" },
     { num: 3, name: "3. Auction Workflows", node: "auction-workflows" },
     { num: 4, name: "4. MSSQL Persistence", node: "database-tier" },
-    { num: 5, name: "5. AI Chatbot", node: "ai-chatbot" },
+    { num: 5, name: "5. Trade Messaging", node: "trade-messaging" },
+    { num: 6, name: "6. AI Chatbot", node: "ai-chatbot" },
   ];
 
   const activeNode = nodes.find((n) => n.id === selectedNodeId) || nodes[0];

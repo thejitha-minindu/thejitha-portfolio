@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
+import { ProjectCover } from "@/components/ProjectCover";
+import { ProjectMediaGallery } from "@/components/ProjectMediaGallery";
+import { getProjectBySlug } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Farmify Agricultural Platform — Case Study | Thejitha Wijayanayake",
@@ -28,6 +31,8 @@ export const metadata: Metadata = {
 };
 
 export default function FarmifyCaseStudy() {
+  const project = getProjectBySlug("farmify");
+
   return (
     <CaseStudyShell>
       <main>
@@ -49,7 +54,7 @@ export default function FarmifyCaseStudy() {
           <div className="cs-meta-grid">
             <div>
               <span>PROJECT TYPE</span>
-              <strong>Team Project</strong>
+              <strong>IDEALIZE 2024 Team Project · AIESEC Univ. of Moratuwa</strong>
             </div>
             <div>
               <span>MY CONTRIBUTION</span>
@@ -57,7 +62,7 @@ export default function FarmifyCaseStudy() {
             </div>
             <div>
               <span>TECHNOLOGY</span>
-              <strong>React.js, Firebase</strong>
+              <strong>React.js, JavaScript, Firebase</strong>
             </div>
             <div>
               <span>TIMELINE</span>
@@ -65,6 +70,12 @@ export default function FarmifyCaseStudy() {
             </div>
           </div>
         </header>
+
+        {/* Hero Cover Image (Gracefully rendered when asset is available) */}
+        <ProjectCover
+          cover={project?.coverImage}
+          projectTitle="Farmify — Agricultural Support Platform"
+        />
 
         {/* 1. Overview */}
         <section className="container cs-content-section">
@@ -74,7 +85,7 @@ export default function FarmifyCaseStudy() {
           </div>
           <div className="cs-text-body">
             <p>
-              Farmify was built as a team project in 2024 to address practical challenges faced by smallholder farmers in accessing direct agricultural expertise and transparent produce pricing.
+              Farmify was built as a team project for IDEALIZE 2024, organized by AIESEC in University of Moratuwa, to address practical challenges faced by smallholder farmers in accessing direct agricultural expertise and transparent produce pricing.
             </p>
             <p>
               The platform provides a streamlined web application where farmers can authenticate securely, list crop yields, explore advisory resources, and receive live updates on inquiries and transactions.
@@ -98,65 +109,82 @@ export default function FarmifyCaseStudy() {
             <div className="cs-card">
               <h4>Firebase Real-Time Synchronization</h4>
               <p>
-                Integrated the Firebase client SDK to synchronize product listings and marketplace updates in real-time across active browser sessions.
+                Configured Firebase Realtime Database connections to deliver instantaneous state updates whenever buyer bids or expert responses were submitted.
               </p>
             </div>
             <div className="cs-card">
-              <h4>Authentication & User Workflows</h4>
+              <h4>Authentication & Role Routing</h4>
               <p>
-                Implemented secure Firebase Authentication flows for farmer logins, profile management, and role-based interface views.
+                Integrated Firebase Auth for secure user registration and role separation between farmers, buyers, and agricultural advisors.
               </p>
             </div>
             <div className="cs-card">
-              <h4>Mobile-Friendly UI</h4>
+              <h4>Responsive UI Polish</h4>
               <p>
-                Designed lightweight, clean CSS layouts ensuring smooth performance and fast interaction across mobile devices.
+                Structured mobile-friendly layout views ensuring agricultural workers on smartphones could navigate forms without desktop overhead.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 4. Technology */}
+        {/* 4. Technology Stack */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
             <span>04 / TECHNOLOGY STACK</span>
-            <span>REACT & SERVERLESS SERVICES</span>
+            <span>CLIENT & CLOUD DATABASE</span>
           </div>
           <div className="decision-table-wrap">
             <table className="decision-table">
               <thead>
                 <tr>
-                  <th>COMPONENT</th>
+                  <th>LAYER</th>
                   <th>TECHNOLOGY</th>
                   <th>ENGINEERING RATIONALE</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Frontend</strong></td>
-                  <td>React.js</td>
-                  <td>Enables interactive single-page component rendering and reactive state updates.</td>
+                  <td><strong>Frontend UI</strong></td>
+                  <td>React.js (JavaScript)</td>
+                  <td>Modular component rendering enabling dynamic form interactions and reactive state management.</td>
                 </tr>
                 <tr>
-                  <td><strong>Backend & Database</strong></td>
-                  <td>Firebase</td>
-                  <td>Provides real-time document synchronization and managed authentication without server maintenance overhead.</td>
+                  <td><strong>Backend / DB</strong></td>
+                  <td>Firebase (Auth & Realtime DB)</td>
+                  <td>Serverless cloud infrastructure enabling rapid authentication, document storage, and live synchronization.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
+        {/* 05 / Media Gallery (Gracefully omitted if no assets exist) */}
+        <ProjectMediaGallery
+          media={project?.media}
+          sectionNumber="05"
+          sectionTitle="FARMIFY APPLICATION GALLERY"
+          sectionSubtitle="RESPONSIVE APPLICATION INTERFACES"
+        />
+
         {/* 5. What I Learned */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
-            <span>05 / WHAT I LEARNED</span>
-            <span>KEY TAKEAWAYS</span>
+            <span>06 / WHAT I LEARNED</span>
+            <span>REAL-TIME SYSTEM PRACTICES</span>
           </div>
-          <div className="cs-text-body">
-            <p>
-              Farmify was an early foundational project in component-driven UI architecture, reactive client state management with React, and integrating serverless cloud backends for real-time applications.
-            </p>
+          <div className="cs-grid-2col">
+            <div className="cs-card">
+              <h4>State Management with Firebase</h4>
+              <p>
+                Handling real-time subscriptions without memory leaks or unnecessary re-renders taught key best practices in React useEffect lifecycle management.
+              </p>
+            </div>
+            <div className="cs-card">
+              <h4>User-Centric Simplification</h4>
+              <p>
+                Building for agricultural users highlighted the necessity of removing unnecessary UI complexity and minimizing friction in core product listing tasks.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -164,7 +192,7 @@ export default function FarmifyCaseStudy() {
         <div className="container">
           <ProjectPagination
             previous={{
-              title: "IEEE WIE University of Moratuwa Website",
+              title: "IEEE WIE University of Moratuwa",
               route: "/work/wie",
             }}
             next={{

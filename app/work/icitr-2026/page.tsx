@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
+import { ProjectCover } from "@/components/ProjectCover";
+import { ProjectMediaGallery } from "@/components/ProjectMediaGallery";
+import { getProjectBySlug } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "ICITR 2026 Case Study",
+  title: "ICITR 2026 Case Study | Thejitha Wijayanayake",
   description:
     "Web development case study by Thejitha Wijayanayake: Official platform for International Conference on Information Technology Research (Faculty of IT, University of Moratuwa) using Next.js & Tailwind CSS.",
   alternates: {
@@ -28,6 +31,8 @@ export const metadata: Metadata = {
 };
 
 export default function ICITRCaseStudy() {
+  const project = getProjectBySlug("icitr-2026");
+
   return (
     <CaseStudyShell>
       <main>
@@ -57,7 +62,7 @@ export default function ICITRCaseStudy() {
             </div>
             <div>
               <span>TECHNOLOGY</span>
-              <strong>Next.js, Tailwind CSS, GitHub</strong>
+              <strong>Next.js, TypeScript, Tailwind CSS, GitHub</strong>
             </div>
             <div>
               <span>STATUS & TIMELINE</span>
@@ -65,6 +70,12 @@ export default function ICITRCaseStudy() {
             </div>
           </div>
         </header>
+
+        {/* Hero Cover Image (Gracefully rendered when asset is available) */}
+        <ProjectCover
+          cover={project?.coverImage}
+          projectTitle="ICITR 2026 Conference Website"
+        />
 
         {/* 1. Overview */}
         <section className="container cs-content-section">
@@ -94,7 +105,7 @@ export default function ICITRCaseStudy() {
             </p>
             <ul>
               <li>Providing structured information for the Call for Papers (CFP), submission guidelines, and author deadlines.</li>
-              <li>Showcasing keynote speaker profiles, workshop agendas, and track categories clearly.</li>
+              <li>Showcasing keynote speaker profiles, workshop agendas, and six technical track categories clearly.</li>
               <li>Ensuring mobile responsiveness so attendees and reviewers can browse schedules seamlessly.</li>
               <li>Enabling clean team collaboration with faculty coordinators through GitHub branch reviews.</li>
             </ul>
@@ -104,32 +115,32 @@ export default function ICITRCaseStudy() {
         {/* 3. My Role */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
-            <span>03 / MY ROLE & CONCRETE CONTRIBUTIONS</span>
-            <span>WEB TEAM MEMBER</span>
+            <span>03 / MY ROLE & CONCRETE RESPONSIBILITIES</span>
+            <span>FRONTEND ARCHITECTURE & COMPONENTS</span>
           </div>
           <div className="cs-grid-2col">
             <div className="cs-card">
-              <h4>Responsive Layout Implementation</h4>
+              <h4>Responsive Page Layouts</h4>
               <p>
-                Contributing to the design and implementation of responsive page layouts in Next.js and Tailwind CSS covering conference overviews, tracks, keynote showcases, and guidelines.
+                Developing responsive Next.js layout structures ensuring crisp presentation across desktop, tablet, and mobile browsers.
               </p>
             </div>
             <div className="cs-card">
-              <h4>Speaker & Workshop Profiles</h4>
+              <h4>Speaker & Track Cataloging</h4>
               <p>
-                Building modular components to cleanly catalog international keynote speakers, research tracks, session timelines, and workshop agendas.
+                Building reusable components to showcase plenary speakers, workshop descriptions, and the six research track categories.
               </p>
             </div>
             <div className="cs-card">
-              <h4>Paper Submission & Announcements</h4>
+              <h4>Author Guidelines & Timeline</h4>
               <p>
-                Implementing announcement banners, important date reminders, and paper submission information for prospective authors.
+                Implementing clear timeline components for manuscript submission milestones, camera-ready deadlines, and registration fees.
               </p>
             </div>
             <div className="cs-card">
-              <h4>Team Collaboration via GitHub</h4>
+              <h4>Collaborative GitHub Workflow</h4>
               <p>
-                Collaborating within the student web development team using GitHub pull request workflows, branch reviews, and responsive component testing.
+                Collaborating with faculty web team members using Git branches, code reviews, and structured PR workflows to maintain code quality.
               </p>
             </div>
           </div>
@@ -139,55 +150,63 @@ export default function ICITRCaseStudy() {
         <section className="container cs-content-section">
           <div className="cs-section-heading">
             <span>04 / TECHNOLOGY STACK</span>
-            <span>MODERN WEB TOOLCHAIN</span>
+            <span>CHOICE OF MODERN FRONTEND TOOLS</span>
           </div>
           <div className="decision-table-wrap">
             <table className="decision-table">
               <thead>
                 <tr>
-                  <th>COMPONENT</th>
-                  <th>CHOICE</th>
+                  <th>LAYER</th>
+                  <th>TECHNOLOGY</th>
                   <th>ENGINEERING RATIONALE</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Frontend Framework</strong></td>
-                  <td>Next.js</td>
-                  <td>Enables fast static page rendering for conference information, modular components, and optimal SEO.</td>
+                  <td><strong>Framework</strong></td>
+                  <td>Next.js, TypeScript</td>
+                  <td>Enables fast static page generation, server rendering where required, and reliable TypeScript type safety.</td>
                 </tr>
                 <tr>
-                  <td><strong>Styling & Layout</strong></td>
+                  <td><strong>Styling</strong></td>
                   <td>Tailwind CSS</td>
-                  <td>Provides consistent typographic scale, accessible color contrast, and rapid mobile-first responsiveness.</td>
+                  <td>Provides consistent design utility tokens, responsive grid layouts, and rapid UI development.</td>
                 </tr>
                 <tr>
                   <td><strong>Version Control</strong></td>
                   <td>GitHub</td>
-                  <td>Enables structured team collaboration, branch staging, and pull request reviews across developers.</td>
+                  <td>Supports team collaboration, structured feature branching, and pull request reviews.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        {/* 5. What I Built & Challenges */}
+        {/* 05 / Media Gallery (Gracefully omitted if no assets exist) */}
+        <ProjectMediaGallery
+          media={project?.media}
+          sectionNumber="05"
+          sectionTitle="CONFERENCE INTERFACES & PAGES"
+          sectionSubtitle="IMPLEMENTED PAGES & RESPONSIVE LAYOUTS"
+        />
+
+        {/* 5. Status & What I Learned */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
-            <span>05 & 06 / WHAT WE ARE BUILDING & ONGOING PROGRESS</span>
-            <span>STATUS: IN DEVELOPMENT</span>
+            <span>06 / CURRENT STATUS & COLLABORATION</span>
+            <span>TEAM DELIVERY</span>
           </div>
           <div className="cs-grid-2col">
             <div className="cs-card">
-              <h4>Current Development Status</h4>
+              <h4>Current Status</h4>
               <p>
-                The platform is actively in development as conference tracks, keynote confirmations, and review timelines are finalized by the faculty committee. We are implementing structured layout templates for ease of content updates.
+                The platform is actively in development leading up to the conference release cycle. Pages are being staged and reviewed in alignment with faculty editorial timelines.
               </p>
             </div>
             <div className="cs-card">
-              <h4>What I Am Learning</h4>
+              <h4>Key Takeaway</h4>
               <p>
-                Working on official university web infrastructure develops practical skills in building accessible, mobile-first academic web portals while coordinating closely with faculty stakeholders and peer student engineers.
+                Working on an institutional university conference website reinforces the importance of accessible design, strict timeline adherence, and clean team communication across multidisciplinary committees.
               </p>
             </div>
           </div>
@@ -201,7 +220,7 @@ export default function ICITRCaseStudy() {
               route: "/work/sandplotter",
             }}
             next={{
-              title: "IEEE WIE University of Moratuwa Website",
+              title: "IEEE WIE University of Moratuwa",
               route: "/work/wie",
             }}
             returnRoute="/#work"

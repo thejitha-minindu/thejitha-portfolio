@@ -94,7 +94,7 @@ export function TopBar({
               type="button"
               className="topbar-action-btn cv-btn"
               onClick={onOpenCV}
-              title="View Web CV"
+              title="View CV (PDF Preview)"
             >
               <span>CV</span>
               <span>↗</span>
@@ -194,7 +194,7 @@ export function TopBar({
                   }}
                   style={{ width: "100%", justifyContent: "center" }}
                 >
-                  VIEW WEB CV ↗
+                  VIEW CV ↗
                 </button>
               )}
 

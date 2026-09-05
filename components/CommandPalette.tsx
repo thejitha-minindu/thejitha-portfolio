@@ -194,9 +194,9 @@ export function CommandPalette({
     // External Links & Actions
     {
       id: "act-cv-view",
-      title: "View Digital CV",
+      title: "View CV Preview",
       category: "ACTIONS",
-      description: "Open the verified interactive CV viewer modal",
+      description: "Open the verified CV PDF preview modal",
       badge: "MODAL",
       action: () => {
         if (onOpenCV) onOpenCV();

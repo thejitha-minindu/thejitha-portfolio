@@ -94,10 +94,23 @@ export function SideNav({
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+          const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+          const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+          const totalHeight = scrollHeight - clientHeight;
+
           if (totalHeight > 0) {
-            const current = Math.min(Math.max((window.scrollY / totalHeight) * 100, 0), 100);
-            setScrollProgress(current);
+            // If scrolled to within 10px of bottom, snap cleanly to 100%
+            if (scrollTop + clientHeight >= scrollHeight - 10) {
+              setScrollProgress(100);
+            } else if (scrollTop <= 2) {
+              setScrollProgress(0);
+            } else {
+              const current = Math.min(Math.max((scrollTop / totalHeight) * 100, 0), 100);
+              setScrollProgress(current);
+            }
+          } else {
+            setScrollProgress(100);
           }
           ticking = false;
         });
@@ -106,8 +119,12 @@ export function SideNav({
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   // IntersectionObserver for active section tracking
@@ -198,7 +215,10 @@ export function SideNav({
           />
           <div
             className="side-nav-progress-indicator"
-            style={{ top: `${scrollProgress}%` }}
+            style={{
+              top: `min(max(${scrollProgress}%, 5px), calc(100% - 5px))`,
+              opacity: scrollProgress > 0.5 ? 1 : 0,
+            }}
           />
         </div>
       </div>
@@ -242,8 +262,8 @@ export function SideNav({
               type="button"
               className="side-nav-action-btn"
               onClick={onOpenCV}
-              title="View Digital CV"
-              aria-label="View Digital CV"
+              title="View CV"
+              aria-label="View CV"
             >
               <span className="action-num">CV</span>
               <span className="action-label">VIEW CV ↗</span>

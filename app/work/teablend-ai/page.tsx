@@ -3,11 +3,14 @@ import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 import { TeaBlendArchViz } from "@/components/TeaBlendArchViz";
+import { ProjectCover } from "@/components/ProjectCover";
+import { ProjectMediaGallery } from "@/components/ProjectMediaGallery";
+import { getProjectBySlug } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "TeaBlendAI: AI-Powered Tea Auction Platform — Case Study | Thejitha Wijayanayake",
   description:
-    "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
+    "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivos Technology using Next.js, FastAPI, and MSSQL.",
   alternates: {
     canonical: "/work/teablend-ai",
   },
@@ -18,17 +21,19 @@ export const metadata: Metadata = {
     siteName: "Thejitha Wijayanayake",
     title: "TeaBlendAI: AI-Powered Tea Auction Platform — Case Study | Thejitha Wijayanayake",
     description:
-      "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
+      "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivos Technology using Next.js, FastAPI, and MSSQL.",
   },
   twitter: {
     card: "summary_large_image",
     title: "TeaBlendAI — Case Study | Thejitha Wijayanayake",
     description:
-      "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivois Global using Next.js, FastAPI, and MSSQL.",
+      "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivos Technology using Next.js, FastAPI, and MSSQL.",
   },
 };
 
 export default function TeaBlendCaseStudy() {
+  const project = getProjectBySlug("teablend-ai");
+
   return (
     <CaseStudyShell>
       <main>
@@ -50,15 +55,15 @@ export default function TeaBlendCaseStudy() {
           <div className="cs-meta-grid">
             <div>
               <span>PROJECT TYPE</span>
-              <strong>Industry Project · Inivois Global (Team Project)</strong>
+              <strong>Industry Project · Inivos Technology (Team Project)</strong>
             </div>
             <div>
               <span>MY CONTRIBUTION</span>
-              <strong>Seller Module, Auction Workflows, Frontend, API & DB Modelling</strong>
+              <strong>Seller Module, Buyer-Seller Messaging System, API & DB Modelling</strong>
             </div>
             <div>
               <span>TECHNOLOGY</span>
-              <strong>Next.js, FastAPI, MSSQL</strong>
+              <strong>Next.js, TypeScript, FastAPI, MSSQL, WebSockets</strong>
             </div>
             <div>
               <span>TIMELINE</span>
@@ -66,6 +71,12 @@ export default function TeaBlendCaseStudy() {
             </div>
           </div>
         </header>
+
+        {/* Hero Cover Image */}
+        <ProjectCover
+          cover={project?.coverImage}
+          projectTitle="TeaBlendAI — Seller Module Dashboard"
+        />
 
         {/* 1. Overview */}
         <section className="container cs-content-section">
@@ -78,7 +89,7 @@ export default function TeaBlendCaseStudy() {
               Tea trading represents a cornerstone of Sri Lanka&apos;s agricultural export economy. Traditionally, tea lot cataloging, quality grading, and auctioning have relied heavily on manual paperwork and physical floor bidding.
             </p>
             <p>
-              TeaBlendAI was developed in collaboration with Inivois Global to modernize this ecosystem into a digital marketplace. The platform provides structured role-based access for tea producers, registered buyers, and administrators, offering scheduled auction events, seller dashboards, and an integrated AI chatbot assistant to guide participants.
+              TeaBlendAI was developed in collaboration with Inivos Technology to modernize this ecosystem into a digital marketplace. The platform provides structured role-based access for tea producers, registered buyers, and administrators, offering scheduled auction events, seller dashboards, and an integrated AI chatbot assistant to guide participants.
             </p>
           </div>
         </section>
@@ -97,6 +108,7 @@ export default function TeaBlendCaseStudy() {
               <li>A systematic way for estate managers and tea sellers to catalog lots and submit reserve prices before auction deadlines.</li>
               <li>Clear auction scheduling and state management (drafting lots, scheduling auctions, live bidding cycles, and closing settlements).</li>
               <li>Role-based access boundaries to ensure tea producers control only their cataloged lots and trade reports.</li>
+              <li>A direct, secure messaging channel between sellers and winning buyers to resolve payment, logistics, and order fulfillment.</li>
               <li>A robust relational database to maintain transactional consistency across all cataloged lots and auction trades.</li>
             </ul>
           </div>
@@ -106,13 +118,19 @@ export default function TeaBlendCaseStudy() {
         <section className="container cs-content-section">
           <div className="cs-section-heading">
             <span>03 / MY ROLE & CONCRETE RESPONSIBILITIES</span>
-            <span>SELLER MODULE & CORE ARCHITECTURE</span>
+            <span>SELLER MODULE, MESSAGING & CORE ARCHITECTURE</span>
           </div>
           <div className="cs-grid-2col">
             <div className="cs-card">
               <h4>Seller Dashboard Development</h4>
               <p>
                 Designed and implemented the full seller dashboard user interface in Next.js, enabling tea producers to register estate details, catalog tea lots, inspect historical trade logs, and review auction timelines.
+              </p>
+            </div>
+            <div className="cs-card">
+              <h4>Buyer-Seller Messaging System</h4>
+              <p>
+                Architected and implemented the direct trade messaging system connecting tea sellers and buyers. Developed real-time trade conversations, negotiation channels, and order inquiry workflows with backend message persistence.
               </p>
             </div>
             <div className="cs-card">
@@ -124,13 +142,13 @@ export default function TeaBlendCaseStudy() {
             <div className="cs-card">
               <h4>Backend API Design (FastAPI)</h4>
               <p>
-                Engineered structured REST API endpoints using FastAPI in Python with strict Pydantic payload validation and role-based authentication dependencies for seller actions.
+                Engineered structured REST API endpoints using FastAPI in Python with strict Pydantic payload validation and role-based authentication dependencies for seller and messaging actions.
               </p>
             </div>
             <div className="cs-card">
               <h4>Database Modelling (MSSQL)</h4>
               <p>
-                Designed normalized MSSQL relational schemas for estate profiles, tea lot specifications, auction schedules, and trade histories with proper foreign key constraints.
+                Designed normalized MSSQL relational schemas for estate profiles, tea lot specifications, auction schedules, order chats, and trade histories with proper foreign key constraints.
               </p>
             </div>
           </div>
@@ -160,23 +178,23 @@ export default function TeaBlendCaseStudy() {
               <tbody>
                 <tr>
                   <td><strong>Frontend</strong></td>
-                  <td>Next.js</td>
-                  <td>Provides component-driven UI architecture, efficient client routing, and responsive dashboard layouts for tea producers.</td>
+                  <td>Next.js, TypeScript</td>
+                  <td>Provides component-driven UI architecture, efficient client routing, and responsive dashboard and chat interfaces for tea producers and buyers.</td>
                 </tr>
                 <tr>
                   <td><strong>Backend API</strong></td>
                   <td>FastAPI (Python)</td>
-                  <td>Offers asynchronous request execution, automatic OpenAPI schema documentation, and robust request validation for auction workflows.</td>
+                  <td>Offers asynchronous request execution, automatic OpenAPI schema documentation, and robust request validation for auction and messaging workflows.</td>
                 </tr>
                 <tr>
                   <td><strong>Database</strong></td>
                   <td>Microsoft SQL Server (MSSQL)</td>
-                  <td>Enterprise relational database ensuring ACID transactional integrity, relational schema enforcement, and reliable ledger storage.</td>
+                  <td>Enterprise relational database ensuring ACID transactional integrity, relational schema enforcement, and reliable ledger and chat storage.</td>
                 </tr>
                 <tr>
-                  <td><strong>AI Assistant</strong></td>
-                  <td>AI Chatbot</td>
-                  <td>Integrated chatbot assistant to answer user questions, explain auction rules, and assist participants navigating the marketplace.</td>
+                  <td><strong>Real-Time Engine</strong></td>
+                  <td>WebSockets & REST APIs</td>
+                  <td>Enables low-latency real-time bidding updates and direct buyer-seller messaging for post-auction trade negotiations.</td>
                 </tr>
               </tbody>
             </table>
@@ -198,10 +216,19 @@ export default function TeaBlendCaseStudy() {
           <TeaBlendArchViz />
         </section>
 
-        {/* 6. Challenges & 7. What I Learned */}
+        {/* 06 / Project Media Gallery */}
+        <ProjectMediaGallery
+          media={project?.media}
+          sectionNumber="06"
+          sectionTitle="SELLER MODULE & AUCTION GALLERY"
+          sectionSubtitle="AUTHENTIC IMPLEMENTED INTERFACES & WORKFLOWS"
+          description="Browse authentic interface screenshots from the deployed platform, including multi-step auction creation wizards, scheduled auctions, live countdown biddings, historical ledgers, and the buyer-seller trade messaging system:"
+        />
+
+        {/* 7. Challenges & What I Learned */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
-            <span>06 & 07 / CHALLENGES & KEY TAKEAWAYS</span>
+            <span>07 / CHALLENGES & KEY TAKEAWAYS</span>
             <span>ENGINEERING GROWTH</span>
           </div>
           <div className="cs-grid-2col">
@@ -214,7 +241,7 @@ export default function TeaBlendCaseStudy() {
             <div className="cs-card">
               <h4>What I Learned</h4>
               <p>
-                Working on an industry team project with Inivois Global provided valuable practical experience in full-stack feature ownership—from translating domain requirements into database schemas to designing RESTful API endpoints and building responsive Next.js interfaces.
+                Working on an industry team project with Inivos Technology provided valuable practical experience in full-stack feature ownership—from translating domain requirements into database schemas to designing RESTful API endpoints and building responsive Next.js interfaces.
               </p>
             </div>
           </div>

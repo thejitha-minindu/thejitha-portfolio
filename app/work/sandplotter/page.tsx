@@ -3,6 +3,9 @@ import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
 import { KineticHardwareViz } from "@/components/KineticHardwareViz";
+import { ProjectCover } from "@/components/ProjectCover";
+import { ProjectMediaGallery } from "@/components/ProjectMediaGallery";
+import { getProjectBySlug } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "SandPlotter Smart Coffee Table (Kinetic Hardware) — Case Study | Thejitha Wijayanayake",
@@ -29,6 +32,8 @@ export const metadata: Metadata = {
 };
 
 export default function SandPlotterCaseStudy() {
+  const project = getProjectBySlug("sandplotter");
+
   return (
     <CaseStudyShell>
       <main>
@@ -44,21 +49,21 @@ export default function SandPlotterCaseStudy() {
 
           <h1 className="cs-title">SandPlotter Smart Coffee Table</h1>
           <p className="cs-lead">
-            Developed an interactive sand art coffee table capable of generating intricate sand patterns and custom text through a CoreXY motion system.
+            Developed an interactive sand art coffee table capable of generating intricate sand patterns, algorithmic geometric curves, and custom text through a CoreXY motion system.
           </p>
 
           <div className="cs-meta-grid">
             <div>
               <span>PROJECT TYPE</span>
-              <strong>First Year Hardware Project</strong>
+              <strong>First Year Hardware Project · University of Moratuwa</strong>
             </div>
             <div>
               <span>TECHNICAL CONTRIBUTION</span>
-              <strong>Motion Mechanism, GRBL Setup, ESP32 Communication & UI</strong>
+              <strong>Motion Mechanism, GRBL Setup, Automated Drawer PCB, ESP32 Bridge, UI</strong>
             </div>
             <div>
               <span>TECHNOLOGY</span>
-              <strong>Arduino Uno, ESP32, GRBL, CoreXY, TFT Display, WebSocket, CNC Shield V3</strong>
+              <strong>Arduino Uno, ESP32, C++, GRBL, CoreXY, Custom PCB, TFT Display, WebSockets</strong>
             </div>
             <div>
               <span>TIMELINE</span>
@@ -66,6 +71,12 @@ export default function SandPlotterCaseStudy() {
             </div>
           </div>
         </header>
+
+        {/* Hero Cover Image */}
+        <ProjectCover
+          cover={project?.coverImage}
+          projectTitle="SandPlotter Smart Coffee Table — Exhibition Build"
+        />
 
         {/* 1. Overview */}
         <section className="container cs-content-section">
@@ -103,13 +114,19 @@ export default function SandPlotterCaseStudy() {
         <section className="container cs-content-section">
           <div className="cs-section-heading">
             <span>03 / TECHNICAL CONTRIBUTION & RESPONSIBILITIES</span>
-            <span>MECHANICAL ASSEMBLY & FIRMWARE</span>
+            <span>MECHANICAL ASSEMBLY, ELECTRONICS & FIRMWARE</span>
           </div>
           <div className="cs-grid-2col">
             <div className="cs-card">
               <h4>Motion Mechanism Assembly</h4>
               <p>
-                Designed and assembled the physical motion mechanism using NEMA 17 stepper motors, GT2 timing belts, idler pulleys, A4988 motor driver modules, and mechanical limit switches for homing calibration.
+                Designed and assembled the physical motion mechanism using NEMA 17 stepper motors, GT2 timing belts, idler pulleys, TMC2208/A4988 motor driver modules, and mechanical limit switches for homing calibration.
+              </p>
+            </div>
+            <div className="cs-card">
+              <h4>Automated Drawer Controller PCB</h4>
+              <p>
+                Designed and fabricated a custom PCB for the table&apos;s motorized automated drawer. Implemented single push-button toggle logic allowing users to both open and close the concealed drawer using the exact same push button.
               </p>
             </div>
             <div className="cs-card">
@@ -121,13 +138,13 @@ export default function SandPlotterCaseStudy() {
             <div className="cs-card">
               <h4>ESP32 to Arduino Communication</h4>
               <p>
-                Implemented serial communication between the ESP32 microcontroller and Arduino Uno to reliably transmit buffered G-code commands.
+                Implemented serial communication between the ESP32 microcontroller and Arduino Uno to stream G-code line by line using acknowledgement-based flow control.
               </p>
             </div>
             <div className="cs-card">
               <h4>TFT Touch Display & Web Application</h4>
               <p>
-                Built the user interfaces allowing users to trigger pattern draws both locally via an on-table TFT touch display and remotely via a web application over WebSockets.
+                Built the user interfaces allowing users to trigger pattern draws both locally via an on-table TFT touch display and remotely via a web application over WebSockets with real-time drawing progress updates.
               </p>
             </div>
           </div>
@@ -156,13 +173,18 @@ export default function SandPlotterCaseStudy() {
                 </tr>
                 <tr>
                   <td><strong>Motor Drivers</strong></td>
-                  <td>A4988 Stepper Drivers</td>
-                  <td>Provides microstepping control and current regulation for the dual NEMA 17 motors.</td>
+                  <td>TMC2208 / A4988 Stepper Drivers</td>
+                  <td>Provides microstepping control, silent operation, and current regulation for the dual NEMA 17 motors.</td>
                 </tr>
                 <tr>
                   <td><strong>Kinematic Mechanism</strong></td>
                   <td>CoreXY Gantry + GT2 Belts</td>
                   <td>Keeps both motors stationary, reducing gantry moving mass and ensuring smooth 2D vector movement.</td>
+                </tr>
+                <tr>
+                  <td><strong>Automated Drawer Controller</strong></td>
+                  <td>Custom Etched PCB & Push Button</td>
+                  <td>Controls the table&apos;s motorized drawer with single push-button open/close toggle logic and motor drive circuitry.</td>
                 </tr>
                 <tr>
                   <td><strong>Wireless & Interface</strong></td>
@@ -194,17 +216,26 @@ export default function SandPlotterCaseStudy() {
           <KineticHardwareViz />
         </section>
 
-        {/* 6. Challenges & 7. What I Learned */}
+        {/* 06 / Hardware & Physical Prototyping Gallery */}
+        <ProjectMediaGallery
+          media={project?.media}
+          sectionNumber="06"
+          sectionTitle="HARDWARE & KINETIC ART GALLERY"
+          sectionSubtitle="PHYSICAL SYSTEM, ELECTRONICS & SAND GEOMETRIES"
+          description="Explore authentic photos of the assembled CoreXY SandPlotter table, custom PCB for the push-button automated drawer, ESP32 controller wiring, and real sand patterns generated under multi-zone LED lighting:"
+        />
+
+        {/* 7. Challenges & What I Learned */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
-            <span>06 & 07 / CHALLENGES & KEY TAKEAWAYS</span>
+            <span>07 / CHALLENGES & KEY TAKEAWAYS</span>
             <span>HARDWARE-SOFTWARE INTEGRATION</span>
           </div>
           <div className="cs-grid-2col">
             <div className="cs-card">
               <h4>Engineering Challenges</h4>
               <p>
-                Balancing belt tension across both CoreXY loops was critical to prevent skewing and ensure perpendicular axes. Tuning driver current limits on the A4988 modules prevented motor overheating during prolonged drawings while ensuring sufficient torque to guide the magnetic carriage through the sand bed.
+                Balancing belt tension across both CoreXY loops was critical to prevent skewing and ensure perpendicular axes. Tuning driver current limits on the motor modules prevented motor overheating during prolonged drawings while ensuring sufficient torque to guide the magnetic carriage through the sand bed.
               </p>
             </div>
             <div className="cs-card">

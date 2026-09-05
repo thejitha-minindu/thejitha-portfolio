@@ -204,7 +204,7 @@ export default function AboutPage() {
             <div>
               <span>CURRICULUM VITAE</span>
               <Link href="/cv" style={{ color: "var(--accent)" }}>
-                View Digital CV Record ↗
+                View Curriculum Vitae Record ↗
               </Link>
             </div>
           </div>

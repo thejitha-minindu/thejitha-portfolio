@@ -312,10 +312,11 @@ button {
   /* Progress Bar */
   .side-nav-progress-wrapper {
     position: absolute;
-    top: 72px;
+    top: 0;
     right: -1px;
-    bottom: 160px;
+    bottom: 0;
     width: 2px;
+    z-index: 10;
   }
 
   .side-nav-progress-track {
@@ -332,7 +333,7 @@ button {
     width: 2px;
     background: var(--accent);
     box-shadow: 0 0 10px var(--accent);
-    transition: height 0.1s linear;
+    transition: height 0.08s linear;
   }
 
   .side-nav-progress-indicator {
@@ -345,7 +346,7 @@ button {
     box-shadow: 0 0 12px var(--accent);
     transform: translateY(-50%);
     pointer-events: none;
-    transition: top 0.1s linear;
+    transition: top 0.08s linear, opacity 0.2s ease;
   }
 
   /* Navigation Menu */
@@ -3457,4 +3458,557 @@ button {
   font-size: 12px;
   color: var(--muted);
 }
+
+/* =========================================================================
+   PROJECT MEDIA SYSTEM, GALLERY, PREVIEWS & LIGHTBOX
+   ========================================================================= */
+
+/* 1. Homepage Project Card Preview Images */
+.editorial-project-row.has-preview {
+  /* Subtle structural balance when preview is present */
+}
+
+.project-preview-wrap {
+  margin: 6px 0 12px;
+  border-radius: 8px;
+  background: rgba(4, 7, 8, 0.6);
+  border: 1px solid var(--surface-border);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-preview-link {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.project-preview-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #090c0d;
+}
+
+.project-preview-image {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-project-row:hover .project-preview-wrap {
+  border-color: rgba(94, 234, 212, 0.35);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(94, 234, 212, 0.06);
+}
+
+.editorial-project-row:hover .project-preview-image {
+  transform: scale(1.02);
+  filter: brightness(1.03) contrast(1.02);
+}
+
+.project-preview-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, transparent 65%, rgba(7, 8, 9, 0.85) 100%);
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
+}
+
+.preview-action-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: rgba(7, 9, 10, 0.85);
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 4px;
+  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.preview-arrow {
+  font-size: 11px;
+}
+
+.preview-hover-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #cbd5e1;
+  max-width: 65%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* 2. Case Study Hero Cover */
+.project-cover-container {
+  margin: 16px auto 48px;
+}
+
+.project-cover-frame {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-cover-frame:hover {
+  border-color: rgba(94, 234, 212, 0.35);
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.55), 0 0 24px rgba(94, 234, 212, 0.08);
+}
+
+.project-cover-clickable {
+  width: 100%;
+  display: block;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+}
+
+.project-cover-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 560px;
+  background: #090c0d;
+}
+
+.project-cover-image {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-cover-clickable:hover .project-cover-image {
+  transform: scale(1.015);
+}
+
+.project-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 70%, rgba(7, 8, 9, 0.75) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 16px 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.project-cover-clickable:hover .project-cover-overlay {
+  opacity: 1;
+}
+
+.cover-expand-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #041712;
+  background: var(--accent);
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.project-cover-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.caption-tag {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.caption-dot {
+  color: var(--dim);
+}
+
+/* 3. Media Gallery Grid & Items */
+.project-gallery-section {
+  /* Aligns with other case study content sections */
+}
+
+.project-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.project-media-item-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-media-item-card.layout-full {
+  grid-column: 1 / -1;
+}
+
+.project-media-clickable {
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  display: block;
+}
+
+.project-media-frame {
+  position: relative;
+  width: 100%;
+  background: rgba(11, 14, 15, 0.9);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.project-media-clickable:hover .project-media-frame {
+  border-color: rgba(94, 234, 212, 0.4);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(94, 234, 212, 0.08);
+  transform: translateY(-2px);
+}
+
+.project-media-content {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+}
+
+.project-media-clickable:hover .project-media-content {
+  transform: scale(1.02);
+  filter: brightness(1.03) contrast(1.02);
+}
+
+.project-media-hover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, transparent 65%, rgba(4, 7, 8, 0.8) 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.project-media-clickable:hover .project-media-hover-overlay {
+  opacity: 1;
+}
+
+.project-media-expand-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #041712;
+  background: var(--accent);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.project-media-caption {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  color: #94a3b8;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.caption-marker {
+  color: var(--accent);
+  font-size: 8px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* 4. Fullscreen Media Lightbox */
+.media-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(4, 7, 8, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: lightboxFadeIn 0.2s ease;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.media-lightbox-container {
+  width: min(94vw, 1280px);
+  height: min(94vh, 880px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.media-lightbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 12px;
+}
+
+.media-lightbox-counter {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.media-lightbox-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-kbd-hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+}
+
+.media-lightbox-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.media-lightbox-close-btn:hover {
+  background: rgba(245, 117, 117, 0.15);
+  border-color: rgba(245, 117, 117, 0.4);
+  color: var(--danger);
+}
+
+.media-lightbox-body {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.media-lightbox-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-lightbox-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 70vh;
+}
+
+.media-lightbox-video {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 8px;
+  border: 1px solid var(--surface-border);
+}
+
+.media-lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(14, 18, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-bright);
+  font-size: 28px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.media-lightbox-nav-btn.prev {
+  left: -20px;
+}
+
+.media-lightbox-nav-btn.next {
+  right: -20px;
+}
+
+.media-lightbox-nav-btn:hover {
+  background: var(--accent);
+  color: #041712;
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.media-lightbox-footer {
+  padding: 12px 14px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.media-lightbox-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e2e8f0;
+  font-size: 13px;
+  line-height: 1.5;
+  flex: 1;
+  min-width: 240px;
+}
+
+.media-lightbox-caption p {
+  margin: 0;
+}
+
+.media-lightbox-nav-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-dot.active {
+  width: 18px;
+  border-radius: 3px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* 5. Responsive Media & Lightbox Adjustments */
+@media (max-width: 1024px) {
+  .media-lightbox-nav-btn.prev {
+    left: 4px;
+  }
+  .media-lightbox-nav-btn.next {
+    right: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .media-lightbox-overlay {
+    padding: 12px;
+  }
+
+  .media-lightbox-container {
+    width: 100%;
+    height: 96vh;
+  }
+
+  .media-lightbox-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .media-lightbox-nav-btn.prev {
+    left: 4px;
+  }
+
+  .media-lightbox-nav-btn.next {
+    right: 4px;
+  }
+
+  .lightbox-kbd-hint {
+    display: none;
+  }
+
+  .preview-hover-caption {
+    display: none;
+  }
+
+  .project-cover-image-wrap {
+    max-height: 320px;
+  }
+
+  .media-lightbox-img-wrap {
+    max-height: 60vh;
+  }
+}
+
 
