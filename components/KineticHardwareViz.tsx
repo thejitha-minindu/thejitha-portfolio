@@ -5,7 +5,7 @@ import { useState } from "react";
 type HardwareSubsystem = {
   id: string;
   name: string;
-  category: "COMPUTE" | "COMMUNICATION" | "DRIVERS" | "MECHANICS" | "PHYSICS";
+  category: "COMPUTE" | "COMMUNICATION" | "DRIVERS" | "MECHANICS" | "PHYSICS" | "ELECTRONICS";
   specs: string;
   role: string;
   technicalImplementation: string;
@@ -45,6 +45,16 @@ export function KineticHardwareViz() {
       technicalImplementation:
         "Calibrated VREF reference voltages on driver pots to set appropriate motor current, preventing overheating while maintaining holding torque.",
       systemIntegration: "Mounted directly into CNC Shield V3 sockets above the Arduino Uno.",
+    },
+    {
+      id: "drawer-pcb",
+      name: "Automated Drawer Controller PCB",
+      category: "ELECTRONICS",
+      specs: "Custom Etched PCB · Push-Button Toggle Logic · Motor Drive Bridge",
+      role: "Controls the table's automated motorized drawer, actuating smooth open and close cycles triggered by a single push button.",
+      technicalImplementation:
+        "Designed custom circuit layout and etched copper PCB traces with debounced push-button toggle logic to control bidirectional drawer movement using the same physical button.",
+      systemIntegration: "Self-contained auxiliary controller embedded within the table chassis.",
     },
     {
       id: "corexy",

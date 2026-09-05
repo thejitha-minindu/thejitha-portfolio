@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
+import { ProjectCover } from "@/components/ProjectCover";
+import { ProjectMediaGallery } from "@/components/ProjectMediaGallery";
+import { getProjectBySlug } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "IEEE WIE University of Moratuwa Website — Case Study | Thejitha Wijayanayake",
@@ -28,6 +31,8 @@ export const metadata: Metadata = {
 };
 
 export default function WIEWebsiteCaseStudy() {
+  const project = getProjectBySlug("wie");
+
   return (
     <CaseStudyShell>
       <main>
@@ -57,7 +62,7 @@ export default function WIEWebsiteCaseStudy() {
             </div>
             <div>
               <span>TECHNOLOGY</span>
-              <strong>Next.js, Tailwind CSS, GitHub</strong>
+              <strong>Next.js, TypeScript, Tailwind CSS, GitHub</strong>
             </div>
             <div>
               <span>TIMELINE</span>
@@ -65,6 +70,12 @@ export default function WIEWebsiteCaseStudy() {
             </div>
           </div>
         </header>
+
+        {/* Hero Cover Image (Gracefully rendered when asset is available) */}
+        <ProjectCover
+          cover={project?.coverImage}
+          projectTitle="IEEE WIE University of Moratuwa Website"
+        />
 
         {/* 1. Overview */}
         <section className="container cs-content-section">
@@ -98,70 +109,87 @@ export default function WIEWebsiteCaseStudy() {
             <div className="cs-card">
               <h4>Event Showcase & Archives</h4>
               <p>
-                Engineered modular event listing components and photo gallery layouts documenting past technical workshops, webinars, and school outreach programs.
+                Created structured listing layouts for past and upcoming initiatives, workshops, webinars, and hackathons with filterable categories.
               </p>
             </div>
             <div className="cs-card">
               <h4>Executive Committee Directory</h4>
               <p>
-                Created structured member directory cards detailing student leadership roles and initiatives for the term.
+                Implemented clean directory components profiling chapter officers, faculty advisors, and volunteer leads.
               </p>
             </div>
             <div className="cs-card">
-              <h4>Performance & Mobile Responsiveness</h4>
+              <h4>Performance & Responsive Polish</h4>
               <p>
-                Ensured fluid responsive styling using Tailwind CSS across mobile smartphones, tablets, and desktop workstations.
+                Optimized layouts using Tailwind CSS for fluid responsiveness across smart devices, ensuring fast load times and clean typography.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 4. Technology */}
+        {/* 4. Technology Stack */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
             <span>04 / TECHNOLOGY STACK</span>
-            <span>TOOLS & FRAMEWORKS</span>
+            <span>MODERN WEB STACK</span>
           </div>
           <div className="decision-table-wrap">
             <table className="decision-table">
               <thead>
                 <tr>
-                  <th>COMPONENT</th>
-                  <th>CHOICE</th>
+                  <th>LAYER</th>
+                  <th>TECHNOLOGY</th>
                   <th>ENGINEERING RATIONALE</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Frontend Framework</strong></td>
-                  <td>Next.js</td>
-                  <td>Component reusability across event showcases, committee cards, and fast page rendering.</td>
+                  <td><strong>Framework</strong></td>
+                  <td>Next.js, TypeScript</td>
+                  <td>Enables efficient client-side routing, static pre-rendering, and modular component reuse.</td>
                 </tr>
                 <tr>
                   <td><strong>Styling</strong></td>
                   <td>Tailwind CSS</td>
-                  <td>Enables rapid responsive utility styling and consistent brand typography.</td>
+                  <td>Enables clean responsive utility design, rapid layout iteration, and consistent spacing.</td>
                 </tr>
                 <tr>
-                  <td><strong>Version Control</strong></td>
+                  <td><strong>Collaboration</strong></td>
                   <td>GitHub</td>
-                  <td>Facilitates team coordination and branch reviews.</td>
+                  <td>Facilitates version control, issue tracking, and peer code reviews across chapter developers.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        {/* 5. What I Learned */}
+        {/* 05 / Media Gallery (Gracefully omitted if no assets exist) */}
+        <ProjectMediaGallery
+          media={project?.media}
+          sectionNumber="05"
+          sectionTitle="CHAPTER PLATFORM GALLERY"
+          sectionSubtitle="IMPLEMENTED WEBPAGE SCREENSHOTS"
+        />
+
+        {/* 6. What I Learned */}
         <section className="container cs-content-section">
           <div className="cs-section-heading">
-            <span>05 / WHAT I LEARNED</span>
-            <span>TEAM COLLABORATION</span>
+            <span>06 / WHAT I LEARNED</span>
+            <span>COMMUNITY-DRIVEN ENGINEERING</span>
           </div>
-          <div className="cs-text-body">
-            <p>
-              Building the IEEE WIE portal strengthened my ability to collaborate effectively within a student engineering team, translate chapter branding requirements into accessible UI components, and maintain high standards of code organization.
-            </p>
+          <div className="cs-grid-2col">
+            <div className="cs-card">
+              <h4>Community Identity</h4>
+              <p>
+                Designing for a student chapter required balancing official IEEE brand guidelines with an engaging, vibrant personality that appeals to incoming undergraduates.
+              </p>
+            </div>
+            <div className="cs-card">
+              <h4>Collaborative Delivery</h4>
+              <p>
+                Delivering features in a team environment sharpened code review habits, Git branch management, and cross-functional coordination with content creators.
+              </p>
+            </div>
           </div>
         </section>
 

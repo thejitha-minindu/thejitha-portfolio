@@ -10,116 +10,11 @@ import { CommandPalette } from "@/components/CommandPalette";
 import { CVViewerModal } from "@/components/CVViewerModal";
 import { Direction } from "@/components/Direction";
 import { DirectionFilter } from "@/components/DirectionFilter";
-import { ProjectCard, Project } from "@/components/ProjectCard";
+import { ProjectCard } from "@/components/ProjectCard";
 import { SectionLabel } from "@/components/SectionLabel";
+import { allProjects } from "@/data/projects";
 
 type NavigationMode = "ALL" | "BUILD" | "EXPLORE" | "ENGINEER";
-
-const allProjects: Project[] = [
-  // 01 — Featured Project
-  {
-    number: "01",
-    slug: "teablend-ai",
-    route: "/work/teablend-ai",
-    title: "TeaBlendAI — AI-powered Tea Auction Platform",
-    projectType: "Industry Project · Inivois Global (Team Project)",
-    timeline: "December 2025 – June 2026",
-    discipline: "BUILD",
-    description:
-      "TeaBlendAI is an AI-powered web application developed to modernize the tea trading industry through a digital auction system and an integrated AI chatbot. It provides role-based access, live and scheduled auction management, seller dashboards and an MSSQL-backed platform connecting tea producers with buyers.",
-    myContribution:
-      "I was responsible for the full-stack development of the Seller Module, including seller dashboard interfaces, auction management workflows, frontend implementation, backend API design and database modelling.",
-    technologies: ["Next.js", "FastAPI", "MSSQL"],
-  },
-  // 02 — Featured Project
-  {
-    number: "02",
-    slug: "sandplotter",
-    route: "/work/sandplotter",
-    title: "SandPlotter Smart Coffee Table",
-    projectType: "First Year Hardware Project",
-    timeline: "August 2024 – August 2025",
-    discipline: "ENGINEER",
-    description:
-      "Developed an interactive sand art coffee table capable of generating intricate sand patterns and custom text through a CoreXY motion system.",
-    myContribution:
-      "Designed and assembled the motion mechanism using NEMA 17 stepper motors, GT2 timing belts, A4988 drivers and limit switches integrated with GRBL firmware running on an Arduino Uno. Implemented communication between the ESP32 and Arduino Uno to transmit G-code commands from both a TFT touch interface and a web-based control platform using WebSockets.",
-    technologies: [
-      "Arduino Uno",
-      "ESP32",
-      "GRBL",
-      "CoreXY",
-      "TFT Touch Display",
-      "WebSocket",
-      "Web Application",
-      "CNC Shield V3",
-    ],
-  },
-  // 03 — Featured Project
-  {
-    number: "03",
-    slug: "icitr-2026",
-    route: "/work/icitr-2026",
-    title: "ICITR 2026 Conference Website",
-    projectType: "Faculty of IT, Univ. of Moratuwa (Team Project)",
-    timeline: "June 2026 – Present",
-    status: "STATUS: IN DEVELOPMENT",
-    discipline: "BUILD",
-    description:
-      "Developing the official website for the International Conference on Information Technology Research (ICITR), organized by the Faculty of Information Technology, University of Moratuwa. Contributing to the design and implementation of a responsive platform for conference information, speaker profiles, workshops, paper submission information and event announcements.",
-    myContribution:
-      "Contributing to the design and implementation of responsive layout structures, speaker cataloging components, important announcement timelines, and author submission guideline workflows.",
-    technologies: ["Next.js", "Tailwind CSS", "GitHub"],
-  },
-  // 04 — Secondary Project
-  {
-    number: "04",
-    slug: "wie",
-    route: "/work/wie",
-    title: "IEEE WIE University of Moratuwa Website",
-    projectType: "IEEE WIE Student Chapter (Team Project)",
-    timeline: "July 2025 – September 2025",
-    discipline: "BUILD",
-    description:
-      "Developed the IEEE WIE University of Moratuwa website to showcase the chapter's mission, events and achievements. Built a responsive platform to promote initiatives and empower women in engineering across Sri Lanka.",
-    myContribution:
-      "Designed and implemented responsive web pages, event showcase listings, executive committee member directories, and chapter leadership archives.",
-    technologies: ["Next.js", "Tailwind CSS", "GitHub"],
-    isSecondary: true,
-  },
-  // 05 — Secondary Project
-  {
-    number: "05",
-    slug: "farmify",
-    route: "/work/farmify",
-    title: "Farmify",
-    projectType: "Agricultural Expertise Platform (Team Project)",
-    timeline: "June 2024 – August 2024",
-    discipline: "BUILD",
-    description:
-      "React and Firebase-based web application developed to support farmers by connecting them with agricultural expertise. Features include secure authentication, product listings and real-time transaction updates.",
-    myContribution:
-      "Built intuitive farmer dashboard views, crop harvest listing interfaces, Firebase real-time data synchronization, and responsive UI components.",
-    technologies: ["React.js", "Firebase"],
-    isSecondary: true,
-  },
-  // 06 — Current Research
-  {
-    number: "06",
-    slug: "cosmic-web",
-    route: "/research/cosmic-web",
-    title: "Deep Learning the Cosmic Web",
-    projectType: "Undergraduate Research Project",
-    timeline: "2026 – Present",
-    status: "STATUS: RESEARCH IN PROGRESS",
-    discipline: "EXPLORE",
-    description:
-      "Investigating the use of U-Net architectures for reconstructing invisible dark matter structures from observable astronomical data. The research explores deep learning approaches to understanding the large-scale structure of the cosmic web.",
-    myContribution:
-      "Investigating deep learning model architectures, data representations, density scaling transformations, and statistical evaluation frameworks in Python and PyTorch.",
-    technologies: ["Python", "PyTorch", "3D U-Net"],
-  },
-];
 
 export default function Home() {
   const [activeMode, setActiveMode] = useState<NavigationMode>("ALL");
@@ -774,7 +669,7 @@ export default function Home() {
                 className="button button-primary"
                 onClick={() => setIsCVModalOpen(true)}
               >
-                VIEW WEB CV ↗
+                VIEW CV ↗
               </button>
               <a
                 href="/Thejitha-CV.pdf"
