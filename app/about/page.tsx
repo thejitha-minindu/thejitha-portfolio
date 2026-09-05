@@ -101,7 +101,7 @@ export default function AboutPage() {
             <div className="cs-card">
               <h4>Cybersecurity & Host Hardening</h4>
               <p>
-                Hands-on experience in vulnerability triage, POSIX capability auditing, and system defense, demonstrated by securing 2nd Runners-up at the Medusa 2.0 National CTF competition.
+                Hands-on experience in vulnerability triage, POSIX capability auditing, reverse engineering, and attack-and-defence CTFs, demonstrated by securing 2nd Runners-up at Medusa 2.0 and 4th Place at VECTRA 2026.
               </p>
             </div>
             <div className="cs-card">

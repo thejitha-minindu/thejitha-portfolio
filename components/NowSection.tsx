@@ -46,7 +46,7 @@ export function NowSection() {
             <div>
               <h3>AI RESEARCH & CYBERSECURITY</h3>
               <p>
-                Investigating U-Net deep learning architectures for cosmological dark matter reconstruction (Research in Progress) alongside participating in national cybersecurity CTF competitions (Medusa 2.0 2nd Runners-up).
+                Investigating U-Net deep learning architectures for cosmological dark matter reconstruction (Research in Progress) alongside participating in competitive cybersecurity CTF competitions (Medusa 2.0 2nd Runners-up, VECTRA 2026 4th Place).
               </p>
             </div>
           </div>
