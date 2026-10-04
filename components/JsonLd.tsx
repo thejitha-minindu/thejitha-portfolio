@@ -1,7 +1,6 @@
-export function JsonLd() {
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://thejitha-portfolio.vercel.app";
+import { siteUrl } from "@/lib/site";
 
+export function JsonLd() {
   const schemaData = {
     "@context": "https://schema.org",
     "@graph": [

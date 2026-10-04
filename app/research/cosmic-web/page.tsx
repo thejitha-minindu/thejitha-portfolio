@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     canonical: "/research/cosmic-web",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/research/cosmic-web",
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
       "Undergraduate astrophysics & deep learning research by Thejitha Wijayanayake: Reconstructing invisible dark matter structures via 3D U-Net neural architectures.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "Deep Learning the Cosmic Web — Research | Thejitha Wijayanayake",
     description:
