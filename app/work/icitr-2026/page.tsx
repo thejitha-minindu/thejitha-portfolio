@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: "/work/icitr-2026",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/work/icitr-2026",
@@ -23,6 +25,7 @@ export const metadata: Metadata = {
       "Web development case study by Thejitha Wijayanayake: Official platform for International Conference on Information Technology Research (Faculty of IT, University of Moratuwa) using Next.js & Tailwind CSS.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "ICITR 2026 Conference Website — Case Study | Thejitha Wijayanayake",
     description:

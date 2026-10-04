@@ -145,7 +145,7 @@ export default async function Image() {
               fontWeight: 500,
             }}
           >
-            thejitha-portfolio.vercel.app
+            thejitha.dev
           </span>
         </div>
       </div>

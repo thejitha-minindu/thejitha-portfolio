@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     canonical: "/projects/security-lab",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/projects/security-lab",
@@ -21,6 +23,7 @@ export const metadata: Metadata = {
       "Cybersecurity case study by Thejitha Wijayanayake: 2nd Runners-up at Medusa 2.0 National CTF competition, Linux POSIX capabilities auditing, web vulnerability triage, and defensive system hardening.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "Medusa 2.0 CTF & Cybersecurity Lab — Case Study | Thejitha Wijayanayake",
     description:

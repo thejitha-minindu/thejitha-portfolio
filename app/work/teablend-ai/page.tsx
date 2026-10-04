@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     canonical: "/work/teablend-ai",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/work/teablend-ai",
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
       "Technical case study of TeaBlendAI by Thejitha Wijayanayake: AI-powered tea auction platform developed with Inivos Technology using Next.js, FastAPI, and MSSQL.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "TeaBlendAI — Case Study | Thejitha Wijayanayake",
     description:

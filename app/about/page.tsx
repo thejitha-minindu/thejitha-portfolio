@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/about",
   },
   openGraph: {
+    images: socialImages,
     type: "website",
     locale: "en_US",
     url: "/about",
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
       "Information Technology undergraduate at the University of Moratuwa exploring software engineering, AI, research and systems.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "About Thejitha Wijayanayake — Software Engineer",
     description:

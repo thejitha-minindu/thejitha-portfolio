@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export type NavSection = {
@@ -158,24 +158,6 @@ export function SideNav({
     };
   }, []);
 
-  const handleNavClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-      e.preventDefault();
-      setActiveId(id);
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        // Update URL hash smoothly without jump
-        if (history.pushState) {
-          history.pushState(null, "", `#${id}`);
-        } else {
-          window.location.hash = `#${id}`;
-        }
-      }
-    },
-    []
-  );
-
   const effectiveExpanded = controlledExpanded !== undefined ? controlledExpanded : isExpanded;
 
   return (
@@ -230,9 +212,8 @@ export function SideNav({
             const isActive = activeId === section.id;
             return (
               <li key={section.id} className="side-nav-item">
-                <a
-                  href={`#${section.id}`}
-                  onClick={(e) => handleNavClick(e, section.id)}
+                <Link
+                  href={`/#${section.id}`}
                   className={`side-nav-link ${isActive ? "active" : ""}`}
                   aria-current={isActive ? "true" : undefined}
                   title={`Jump to ${section.label}`}
@@ -240,7 +221,7 @@ export function SideNav({
                   <span className="side-nav-active-pip" aria-hidden="true" />
                   <span className="side-nav-num">{section.num}</span>
                   <span className="side-nav-label">{section.label}</span>
-                </a>
+                </Link>
               </li>
             );
           })}

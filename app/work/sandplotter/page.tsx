@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     canonical: "/work/sandplotter",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/work/sandplotter",
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
       "Hardware engineering case study of SandPlotter by Thejitha Wijayanayake: Interactive kinetic sand table combining CoreXY kinematics, Arduino Uno GRBL, ESP32 WebSockets, and TFT touch control.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "SandPlotter Smart Coffee Table — Case Study | Thejitha Wijayanayake",
     description:

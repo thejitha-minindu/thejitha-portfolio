@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { NAV_SECTIONS } from "./SideNav";
 
@@ -18,46 +19,49 @@ export function TopBar({
   onOpenCV,
 }: TopBarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const menuDrawerRef = useRef<HTMLDivElement>(null);
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMobileMenuOpen]);
+  // Release the lock before Next.js performs its normal route/hash scrolling.
+  const closeMobileMenu = () => {
+    flushSync(() => setIsMobileMenuOpen(false));
+  };
 
-  // Handle Escape key to close mobile menu
   useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const drawer = menuDrawerRef.current;
+    const toggle = menuToggleRef.current;
+    document.body.style.overflow = "hidden";
+    drawer?.querySelector<HTMLButtonElement>("button")?.focus();
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMobileMenuOpen) {
+      if (e.key === "Escape") {
+        e.preventDefault();
         setIsMobileMenuOpen(false);
+      }
+      if (e.key === "Tab") {
+        const controls = drawer?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])");
+        if (!controls?.length) return;
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      if (drawer?.contains(document.activeElement)) toggle?.focus({ preventScroll: true });
+    };
   }, [isMobileMenuOpen]);
-
-  const handleMobileNavClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-      e.preventDefault();
-      setIsMobileMenuOpen(false);
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        if (history.pushState) {
-          history.pushState(null, "", `#${id}`);
-        } else {
-          window.location.hash = `#${id}`;
-        }
-      }
-    },
-    []
-  );
 
   return (
     <>
@@ -118,8 +122,10 @@ export function TopBar({
           <button
             type="button"
             className="mobile-menu-toggle"
+            ref={menuToggleRef}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
             aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             <span className="mobile-toggle-box">
@@ -135,11 +141,14 @@ export function TopBar({
       <div
         className={`mobile-nav-overlay ${isMobileMenuOpen ? "open" : ""}`}
         aria-hidden={!isMobileMenuOpen}
+        inert={!isMobileMenuOpen}
       >
         <div className="mobile-nav-backdrop" onClick={() => setIsMobileMenuOpen(false)} />
 
         <div
           className="mobile-nav-drawer"
+          id="mobile-navigation"
+          ref={menuDrawerRef}
           role="dialog"
           aria-modal="true"
           aria-label="Navigation Menu"
@@ -163,15 +172,15 @@ export function TopBar({
             <ul className="mobile-nav-list" role="list">
               {NAV_SECTIONS.map((sec) => (
                 <li key={sec.id} className="mobile-nav-item">
-                  <a
-                    href={`#${sec.id}`}
-                    onClick={(e) => handleMobileNavClick(e, sec.id)}
+                  <Link
+                    href={`/#${sec.id}`}
+                    onNavigate={closeMobileMenu}
                     className="mobile-nav-link"
                   >
                     <span className="mobile-nav-num">{sec.num}</span>
                     <span className="mobile-nav-label">{sec.label}</span>
                     <span className="mobile-nav-arrow">→</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -189,7 +198,7 @@ export function TopBar({
                   type="button"
                   className="button button-primary"
                   onClick={() => {
-                    setIsMobileMenuOpen(false);
+                    closeMobileMenu();
                     onOpenCV();
                   }}
                   style={{ width: "100%", justifyContent: "center" }}

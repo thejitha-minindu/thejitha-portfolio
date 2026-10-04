@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     canonical: "/cv",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/cv",
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
       "Official Curriculum Vitae of Thejitha Wijayanayake, Third-Year Information Technology Undergraduate at University of Moratuwa. View or download the verified CV PDF.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "Curriculum Vitae (CV) | Thejitha Wijayanayake",
     description:

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
+import { siteUrl, socialImages } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,9 +15,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
   variable: "--font-mono",
 });
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://thejitha-portfolio.vercel.app";
 
 export const viewport: Viewport = {
   themeColor: "#070808",
@@ -67,6 +65,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
+    images: socialImages,
     type: "website",
     locale: "en_US",
     url: "/",
@@ -76,6 +75,7 @@ export const metadata: Metadata = {
       "Thejitha Wijayanayake is an Information Technology undergraduate at the University of Moratuwa interested in software engineering, artificial intelligence, cybersecurity, and research.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "Thejitha Wijayanayake | Software Engineer",
     description:

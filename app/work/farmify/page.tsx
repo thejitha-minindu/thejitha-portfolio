@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: "/work/farmify",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/work/farmify",
@@ -23,6 +25,7 @@ export const metadata: Metadata = {
       "Web development case study by Thejitha Wijayanayake: Agricultural marketplace & advisory application connecting farmers with resources using React.js & Firebase real-time database.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "Farmify Agricultural Platform — Case Study | Thejitha Wijayanayake",
     description:

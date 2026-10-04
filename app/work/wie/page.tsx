@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialImages } from "@/lib/site";
 import Link from "next/link";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { ProjectPagination } from "@/components/ProjectPagination";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     canonical: "/work/wie",
   },
   openGraph: {
+    images: socialImages,
     type: "article",
     locale: "en_US",
     url: "/work/wie",
@@ -23,6 +25,7 @@ export const metadata: Metadata = {
       "Web development case study by Thejitha Wijayanayake: Official platform for IEEE Women in Engineering (WIE) Student Branch Affinity Group, University of Moratuwa built with Next.js & Tailwind CSS.",
   },
   twitter: {
+    images: socialImages,
     card: "summary_large_image",
     title: "IEEE WIE University of Moratuwa Website — Case Study | Thejitha Wijayanayake",
     description:
